@@ -91,17 +91,148 @@
 //	//所以存储为0x00 00 d0 40
 //	return 0;
 //}
+//int main()
+//{
+//	int n = 9;
+//	float* pFloat = (float*)&n;
+//	printf("%d\n", n);//9
+//	printf("%f\n", *pFloat);//0.0000000000000
+//	//整形强行转换为浮点型，E的那八位很容易全为0，此时为 num * 2^-126 为很小的数，所以为0.0000000000
+//
+//	*pFloat = 9.0;
+//	printf("%d", n);//9.0强行存储再整形中，E的部位通常1  0 都有，所以会是很大的数。
+//	printf("%f", *pFloat);
+//
+//	return 0;
+//}
+//int main()
+//{
+//    char* p = 'a';
+//	//printf("%c\n", *p);
+//	//printf("%s\n", p);
+//	printf("hello world\n");
+//	return 0;
+//}
+
+//int main()
+//{
+//	char arr1[] = "abcdef";
+//	char arr2[] = "abcdef";
+//	char* p1 = "abcdef";
+//	char* p2 = "abcdef";
+//	//打印haha，两个arr的首地址不同。
+//	if (arr1 == arr2)
+//	{
+//		printf("hehe\n");
+//	}
+//	else
+//	{
+//		printf("haha\n");
+//	}
+//	//打印hehe，两个指针存的内容相同，为了省内存用同一个内存。
+//	if (p1 == p2)
+//	{
+//		printf("hehe\n");
+//	}
+//	else
+//	{
+//		printf("haha\n");
+//	}
+//	/*char* p = "abcdef";
+//	printf("%c\n", *p);
+//	printf("%s\n", p);
+//	return 0;*/
+//}
+//int main()
+//{
+//	int arr1[] = { 1,2,3,4,5 };
+//	int arr2[] = { 2,3,4,5,6 };
+//	int arr3[] = { 3,4,5,6,7 };
+//	int* parr[] = { arr1,arr2,arr3 };
+//	int i = 0;
+//	int  k = 0;
+//	for (i = 0; i < 3; i++)
+//	{
+//		for (k = 0; k < 5; k++)
+//		{
+//			printf("%d  ", *(parr[i]+k));
+//		}
+//		printf("\n");
+//	}
+//	return 0;
+////}
+//int main()
+//{
+//	char* arr1[10] = { 0 };//指针数组，存放指针的数组，是数组。
+//	char*(* pa1)[10] = &arr1;//数组的地址
+//	//取地址指针数组，（*pa1）相当于创建一个数组指针变量
+//	// 这个指针指向10个地址，char*告诉这个数组指针指向的类型
+//	//char*与指向的数组类型相同。
+//	int arr2[10] = { 0 };
+//	int (*pa2)[10] = &arr2;
+//	//int类型是与指向的数组相同类型
+//	return 0;
+//}
+//void print1(int arr[3][5], int x, int y)
+//{
+//	int i = 0;
+//	for (i = 0; i < x; i++)
+//	{
+//		int k = 0;
+//		for (k = 0; k < y; k++)
+//		{
+//			printf("%d ", *(*(arr + i) + k));//
+//			//arr+i arr指的是第一行的数组地址
+//			// arr[3][5]这里相当于有3个数组元素，每个元素是有5个元素的数组
+//			// 所以首元素的地址是第一行的数组元素
+//			// *（arr+i）解引用，得到第一行的数组元素的地址（该元素是数组，所以该元素的地址是元素的首元素地址）
+//			// 所以解引用后得到的是第一行第一列元素的地址
+//			//*(*(arr+i)+k)所以加上k后还需要解引用得到元素
+//		}
+//		printf("\n");
+//	}
+//}
+//void print2(int (*p)[5], int x, int y)
+//{
+//	int i = 0;
+//	for (i = 0; i < x; i++)
+//	{
+//		int k = 0;
+//		for (k = 0; k < y; k++)
+//		{
+//			//*p == arr
+//			//以下四种效果相同
+//			printf("%d ", *(*(p + i) + k));
+//			//同上
+//			printf("%d ", (*(p + i))[k]);//
+//			//为防止*（p+i）与[k]结合，所以要在前面加上括号
+//
+//			printf("%d ", *(p[i]+k));
+//			//p[i]相当与*（p+i）
+//			printf("%d ", p[i] [k]);
+//		    
+//			//对于一维数组来说p[i] == arr[i] == *(p+i) == *(arr+i)
+//			
+//		}
+//		printf("\n");
+//	}
+//}
+//int main()
+//{
+//	int arr[3][5] = { {1,2,3,4,5},{2,3,4,5,6},{3,4,5,6,7} };
+//	print1(arr, 3, 5);
+//	print2(arr, 3, 5);
+//	return 0;
+//}
 int main()
 {
-	int n = 9;
-	float* pFloat = (float*)&n;
-	printf("%d\n", n);//9
-	printf("%f\n", *pFloat);//0.0000000000000
-	//整形强行转换为浮点型，E的那八位很容易全为0，此时为 num * 2^-126 为很小的数，所以为0.0000000000
-
-	*pFloat = 9.0;
-	printf("%d", n);//9.0强行存储再整形中，E的部位通常1  0 都有，所以会是很大的数。
-	printf("%f", *pFloat);
-
+	int arr[5];
+	//普通数组，有五个元素，每个元素类型是int --- 数组
+	int* parr1[10];
+	//是个指针数组，有10个元素，每个元素类型是int* -- 数组
+	int (*parr2)[10];
+	//数组指针，该指针指向一个数组，该数组有10个元素，元素类型为int ---指针
+	int(*parr3[10])[5];
+	//
 	return 0;
 }
