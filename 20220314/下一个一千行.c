@@ -278,10 +278,10 @@
 //	//中间的函数名用了一个函数表示。
 //	//该函数有两个参数，一个是int，另一个是函数指针。
 //	return 0;
-//}
+//}232333333333333
 typedef unsigned int uint;
 int main()
 {
-
+	int i;
 	return 0;
 }
