@@ -561,9 +561,155 @@ int main()
 //	//test5();//实现float类型数组升序
 //	return 0;
 //}
+//#include <stdio.h>
+//int main()
+//{
+//	//
+//	char* c[] = { "ENTER", "NEW","POINT","FIRST" };//
+//	//c是数组，存放char*类型的指针。
+//	char** cp[] = { c + 3 ,c + 2,c + 1 ,c };
+//	//cp是数组存放c数组里面指针的二级数组。
+//	char*** cpp = cp;
+//	//cpp是指针，三级指针。
+//	printf("%s\n", **++cpp);//++自增影响后面cpp的值。
+//	//++优先级高
+//	//cpp存放的是cp的首元素地址，++就是第二个元素的地址
+//	//**解引用，第一个是解出c+2，变成*（c+2）
+//    //c+2表示c中第三个元素，即“POINT”；
+//	//解引用后即是这个。
+//	printf("%s\n", *--*++cpp + 3);//
+//	//+3最后运算，先自增，解引用，c + 1
+//	//c+1再自减，自减的是cp不是cpp，c，再解引用，“ENTER”，+3，向后移动三位
+//	//即“ER”
+//    printf("%s\n", *cpp[-2] + 3);
+//	//先-2解引用，cpp前面有两次自增，解引用后对应的是c+3
+//	//cp有自减不影响cpp解引用，再解引用，“FIRST”，+3后为“ST”；
+//	printf("%s\n", cpp[-1][-1] + 1);
+//	//-1解引用c+2，再-1为c+1，解引用后为“NEW”+1，为“EW”，不打印
+//	/*char *a[] = { "work","at","alibaba" };
+//	char**pa = a;
+//	pa++;
+//	printf("%s\n", *pa);*/
+//	retur# 0;
+//}
 #include <stdio.h>
+//void Char_N(char* arr)
+//{
+//	char* left = arr;
+//	int sz = strlen(arr);
+//	char* right = arr + sz - 1;
+//	while (left < right)
+//	{
+//		int ret = *left;
+//		*left = *right;
+//		*right = ret;
+//		left++;
+//		right--;
+//	}	
+//
+//}
+//int main()
+//{
+//	char arr[256] = {0};
+//	//scanf_s("%s", arr,256);
+//	gets(arr);
+//	//int sz = sizeof(arr) / sizeof(arr[0]);
+//	Char_N(arr);
+//	printf("%s\n", arr);
+//	return 0;
+//
+//}
+//int main()
+//{
+//	int n = 0, a,x;
+//	scanf_s("%d%d", &a,&x);
+//	int i;
+//	int k = a;
+//	for (i = 0; i < x; i++)
+//	{
+//		n += a;
+//		int j = a * 10;
+//		a = j + k;
+//	}
+//	printf("%d", n);
+//
+//	return 0;
+//}
+#include <math.h>
+//int My_pow(int x, int y)
+//{
+//	int i = 0;
+//	int num = 1;
+//	for (i = 0; i < y; i++)
+//	{
+//		num *= x;
+//	}
+//	return num;
+//}
+//
+//int main()
+//{
+//
+//	int i = 0;
+//	//int arr[6] = { 0 };
+//	for (i = 0; i <= 100000; i++)
+//	{
+//		int count = 0;
+//		int j = i;
+//		while (j)
+//		{
+//			
+//			j /= 10;
+//			count++;
+//		}
+//		int k = 0;
+//		int ret = 0;
+//		int ii = i;
+//		for (k = 0; k < count; k++)
+//		{
+//			ret +=  pow((ii % 10),count);
+//			ii /= 10;
+//			/*if (ret > i)
+//				continue;*/
+//		}
+//		/*int ret = 0;
+//		for (k = 0; k < count; k++)
+//		{
+//			ret += arr[k] * count;
+//			
+//		}*/
+//		if (ret == i)
+//			printf("%d ", ret);
+//	}
+//	return 0;
+//}
+//2222222222222222222222222
 int main()
 {
-
+	int w, h;
+	scanf_s("%d%d", &w, &h);
+	
+	
+		/*if (l % 2 == 0 || w % 2 == 0)
+		{
+			printf("请输入奇数");
+		}*/
+		int numw = w;
+		int numl = h;
+		int s2 = h / 2 + 1;
+		int s1 = w / 2 + 1;
+		for (int k = 0; k < w; k++)
+		{
+			for (int i = s2; i > 0; i--)
+			{
+				if (i > s1 - k && i < s1 + k)
+					printf("*");
+				else
+					printf(" ");
+			}
+			printf("\n");
+		}
+		//break;
+	//}
 	return 0;
 }
