@@ -684,32 +684,110 @@ int main()
 //	return 0;
 //}
 //2222222222222222222222222
+//int main()
+//{
+//	int w, h;
+//	scanf_s("%d%d", &w, &h);
+//	
+//	
+//		/*if (l % 2 == 0 || w % 2 == 0)
+//		{
+//			printf("请输入奇数");
+//		}*/
+//		int numw = w;
+//		int numl = h;
+//		int s2 = h / 2 + 1;
+//		int s1 = w / 2 + 1;
+//		for (int k = 0; k < w; k++)
+//		{
+//			for (int i = s2,j = s2; i > 0,j < w; i--,j++)
+//			{
+//				if (i > s1 - k && j < s1 + k)
+//					printf("*");
+//				else
+//					printf(" ");
+//			}
+//			printf("\n");
+//		}
+//		//break;
+//	//}
+//	return 0;
+//}
+
+
+
+
+//待优化，只能打印H，W 相同且是奇数的棱形。
+//int main()
+//{
+//	int H, W;
+//	scanf_s("%d%d", &H ,&W);
+//	int i, k;//i--H;k--W
+//	int s1 = H / 2 + 1;
+//	int s2 = W / 2 + 1;
+//	for (i = 0; i < s1; i++)
+//	{
+//		for (k = 0; k < W; k++)
+//		{
+//			if (k >= s2 - i - 1 && k <= s2 + i - 1)
+//				printf("*");
+//			else
+//				printf(" ");
+//		}
+//		printf("\n");
+//	}
+//	for (i = s1 - 1; i > 0; i--)
+//	{
+//		for (k = W; k > 0; k--)//3
+//		{
+//			if (k >= s2 - i + 1 && k <= s2 + i - 1)//k >= 2-1+1,k <= 2+1+1
+//				printf("*");
+//			else
+//				printf(" ");
+//		}
+//		printf("\n");
+//	}
+//	return 0;
+//}
+//int main()
+//{
+//	int k, n;
+//	scanf_s("%d%d", &k, &n);
+//	int x;
+//	if (n == 0)
+//		x = 0;
+//	else
+//	 x = (k * n - 1) / (k - 1);
+//	printf("%d", x);
+//	return 0;
+//}
+void Move(int* arr, int sz)
+{
+	int* l = arr;
+	//int* r = arr[sz-1];
+	int i = 0;
+	int num = 0;
+	for (i = 0; i < sz; i++)
+	{
+		if ((*(l + i)) % 2 == 1)
+		{
+			int ret = *(l + i);
+			*(l + i) = arr[num];
+			arr[num] = ret;
+		
+			num++;
+		}
+	}
+	for (i = 0; i < sz; i++)
+	{
+		printf("%d ", arr[i]);
+	}
+}
+
 int main()
 {
-	int w, h;
-	scanf_s("%d%d", &w, &h);
-	
-	
-		/*if (l % 2 == 0 || w % 2 == 0)
-		{
-			printf("请输入奇数");
-		}*/
-		int numw = w;
-		int numl = h;
-		int s2 = h / 2 + 1;
-		int s1 = w / 2 + 1;
-		for (int k = 0; k < w; k++)
-		{
-			for (int i = s2; i > 0; i--)
-			{
-				if (i > s1 - k && i < s1 + k)
-					printf("*");
-				else
-					printf(" ");
-			}
-			printf("\n");
-		}
-		//break;
-	//}
+	int arr[] = { 1,2,3,6,5,4,7,8,9 };
+	int sz = sizeof(arr) / sizeof(arr[0]);
+	Move(arr, sz);
 	return 0;
 }
