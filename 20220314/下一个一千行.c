@@ -939,7 +939,7 @@ int main()
 //		}
 //	}	
 //	return 0;
-//}
+//}8888888888888888
 //int main()
 //{
 //	int(*(*arr)[10])(int*);
@@ -947,4 +947,4 @@ int main()
 //	int* p = "hello wrold";
 //	printf("%c", *p);
 //	return 0;
-//}
+//}888888888888888
