@@ -761,33 +761,190 @@ int main()
 //	printf("%d", x);
 //	return 0;
 //}
-void Move(int* arr, int sz)
-{
-	int* l = arr;
-	//int* r = arr[sz-1];
-	int i = 0;
-	int num = 0;
-	for (i = 0; i < sz; i++)
+//void Move(int* arr, int sz)
+//{
+//	int* l = arr;
+//	//int* r = arr[sz-1];
+//	int i = 0;
+//	int num = 0;
+//	for (i = 0; i < sz; i++)
+//	{
+//		if ((*(l + i)) % 2 == 1)
+//		{
+//			int ret = *(l + i);
+//			*(l + i) = arr[num];
+//			arr[num] = ret;
+//		
+//			num++;
+//		}
+//	}
+//	for (i = 0; i < sz; i++)
+//	{
+//		printf("%d ", arr[i]);
+//	}
+//}
+//
+//int main()
+//{
+//	int arr[] = { 1,2,3,6,5,4,7,8,9 };
+//	int sz = sizeof(arr) / sizeof(arr[0]);
+//	Move(arr, sz);
+//	return 0;
+//}
+//int main()
+//{
+//	unsigned int a = 0x1234;
+//	unsigned char b = *(unsigned char*)&a;
+//	/*unsigned char a = 200;
+//	unsigned char b = 100;
+//	unsigned char c = 0;
+//	c = a + b;*/
+//	printf("%d", b);//小段为52，大段为0
+//
+//	return 0;
+//}
+#include <string.h>
+//int main()
+//{
+//	char a[1000] = { 0 };
+//	int i = 0;
+//	for (i = 0; i < 1000; i++)
+//	{
+//		a[i] = -1 - i;
+//	}
+//	printf("%zd", strlen(a));
+//	return 0;
+//}
+//int main()
+//{
+//	int n ;
+//	scanf_s("%d", &n);
+//	int i = 0;
+//	int arr[10][10] = { 0 };
+//	arr[0][0] = 1;
+//	printf("%d\n",arr[0][0]);
+//	for (i = 1; i < n; i++)
+//	{
+//		int k = 0;
+//		for (k = 0; k <= i; k++)
+//		{
+//			if (k == 0 || k == i)
+//			{
+//				arr[i][k] = 1;
+//				printf("%d ", arr[i][k]);
+//			}
+//			else
+//			{
+//				arr[i][k] = arr[i - 1][k - 1] + arr[i - 1][k];
+//				printf("%d ", arr[i][k]);
+//
+//			}
+//		}
+//		printf("\n");
+//	}
+//	return 0;
+//}
+//int main()
+//{
+	//int a = 0,b = 0,c = 0,d = 0;
+	//int arr[4] = { a,b,c,d };
+	////while (a + b + c + d)
+	////{
+
+	////}
+	//int A, B, C, D;
+	//if (a = 1)
+	//{
+	//	A = 0;
+	//	B = 0;
+	//	C = 0;
+	//	D = 1;
+	//	if (A + B + C + D == 3)
+	//		printf("a");
+	//}
+	/*int k = 0;
+	for (k = 'a'; k <= 'd'; k++)
 	{
-		if ((*(l + i)) % 2 == 1)
-		{
-			int ret = *(l + i);
-			*(l + i) = arr[num];
-			arr[num] = ret;
-		
-			num++;
+		if ((k != 'a') + (k == 'c') + (k == 'd') + (k != 'd') == 3)
+		{ 
+			printf("%c\n", k);
+
 		}
 	}
-	for (i = 0; i < sz; i++)
-	{
-		printf("%d ", arr[i]);
-	}
-}
-
-int main()
-{
-	int arr[] = { 1,2,3,6,5,4,7,8,9 };
-	int sz = sizeof(arr) / sizeof(arr[0]);
-	Move(arr, sz);
 	return 0;
-}
+}*/
+//void judy(int x, int n, int w,int* count)
+//{
+//	int i = 0;
+//	if (x > w)
+//	{
+//		while (x > w)
+//		{
+//			(*count)++;
+//			i++;
+//			x -= n;
+//		}
+//		x = w * i + x;
+//		judy(x, n, w, count);
+//	}
+//}
+//int main()
+//{
+//	int x = 36;
+//	int n = 6;
+//	int w = 3;
+//	int i = 0;
+//	int count = 0;
+//	judy(x, n, w,&count);
+//	/*while (x)
+//	{
+//		count++;
+//		x -= 6;
+//	}*/
+//	printf("%d", count);
+//	//printf("%d", count);
+//	return 0;
+//}
+//int main()
+//{
+//	int a = 0;
+//	int b = 0;
+//	int c = 0;
+//	int d = 0;
+//	int e = 0;
+//	for (a = 1; a < 6; a++)
+//	{
+//		for (b = 1; b < 6; b++)
+//		{
+//			for (c = 1; c < 6; c++)
+//			{
+//				for (d = 1; d < 6; d++)
+//				{
+//					for (e = 1; e < 6; e++)
+//					{
+//						if ((b == 2) + (a == 3) == 1 &&
+//							(b == 2) + (e == 4) == 1 &&
+//							(c == 1) + (d == 2) == 1 &&
+//							(c == 5) + (d == 3) == 1 &&
+//							(e == 4) + (a == 1) == 1)
+//						{
+//							if (a * b * c * d * e == 120)
+//							{
+//								printf("%d %d %d %d %d\n", a, b, c, d, e);
+//							}
+//						}
+//					}
+//				}
+//			}
+//		}
+//	}	
+//	return 0;
+//}
+//int main()
+//{
+//	int(*(*arr)[10])(int*);
+//	int (*(*F)(int, int))(int);
+//	int* p = "hello wrold";
+//	printf("%c", *p);
+//	return 0;
+//}
