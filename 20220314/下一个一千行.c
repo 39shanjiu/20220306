@@ -592,7 +592,7 @@ int main()
 //	printf("%s\n", *pa);*/
 //	retur# 0;
 //}
-#include <stdio.h>
+//#include <stdio.h>
 //void Char_N(char* arr)
 //{
 //	char* left = arr;
@@ -803,7 +803,7 @@ int main()
 //
 //	return 0;
 //}
-#include <string.h>
+//#include <string.h>
 //int main()
 //{
 //	char a[1000] = { 0 };
@@ -948,3 +948,224 @@ int main()
 //	printf("%c", *p);
 //	return 0;
 //}888888888888888
+//void turnleft(char* arr, int n,int sz)
+//{
+//	if (n != 0)
+//	{
+//		int ret = arr[0];
+//		int i = 0;
+//		for (i = 1; i < sz; i++)
+//		{
+//			arr[i - 1] = arr[i];
+//		}
+//		arr[sz - 1] = ret;
+//		n--;
+//		turnleft(arr, n, sz);
+//	}
+//}
+//int main()
+//{
+//	char arr[] = "abcdefd";
+//	int n = 3;
+//	int sz = strlen(arr);
+//	scanf_s("%d", &n);
+//	turnleft(arr, n,sz);
+//	int i = 0;
+//	/*for (i = 0; i < sz; i++)
+//	{
+//		printf("%c ", arr[i]);
+//	}*/
+//	printf("%s", arr);
+//	return 0;
+//}
+//int main()
+//{
+//	char arr[] = "abcdefgh";
+//	int n = 3;
+//	int sz = strlen(arr);
+//	int i = 0;
+//	char ret = *arr;
+//	/*for (i = 0; i < n - 1; i++)
+//	{
+//		*(arr + i) = *(arr + i + 1);
+//	}*/
+//	for (i = 0; i < n - 1; i++) 
+//	{
+//		*(arr + i) = *(arr + i + 1);
+//	}
+//	*(arr + n - 1) = ret;
+//	ret = *(arr + n);
+//	for (i = n ; i < sz - 1; i++)
+//	{
+//		*(arr + i) = *(arr + i + 1);
+//	}
+//	*(arr + sz - 1) = ret;
+//
+//	//ret = *arr;
+//	/*for (i = 0; i < sz - 1; i++)
+//	{
+//		*(arr + i) = *(arr + i + 1);
+//	}*/
+//	//*(arr + sz - 1) = ret;
+//	printf("%s", arr);
+//	return 0;
+//}
+//int main()
+//{
+//	char arr[] = "abcdefgh";
+//	int sz = strlen(arr);
+//	int n = 3;
+//	int s = n;
+//	int r = sz;
+//	while (s <= n/2)
+//	{
+//		char ret = *(arr + (n-s));
+//		*(arr + (n - s)) = *(arr + s - 1);
+//		*(arr + s - 1) = ret;
+//		s--;
+//	}
+//	while (r <= (sz-n)/2)
+//	{
+//		char ret = *(arr + n);
+//		*(arr +  n ) = *(arr + r - 1);
+//		*(arr + r - 1) = ret;
+//		r--;
+//	}
+//	int num = sz;
+//	while (num <= sz / 2)
+//	{
+//		char ret = *(arr + sz - num);
+//		*(arr + sz - num) = *(arr + num - 1);
+//		*(arr + num - 1) = ret;
+//	}
+//	printf("%s", arr);
+//	return 0;
+//}
+//void turnleft(char* arr, int n, int sz)
+//{
+//	if (n != 0)
+//	{
+//		int ret = arr[0];
+//		int i = 0;
+//		for (i = 1; i < sz; i++)
+//		{
+//			arr[i - 1] = arr[i];
+//		}
+//		arr[sz - 1] = ret;
+//		n--;
+//		turnleft(arr, n, sz);
+//	}
+//}
+//int main()
+//{
+//
+//	return 0;
+//int main()
+//{int judy(char* arr1, char* arr2)
+//{
+//	int sz = strlen(arr2);
+//	int num = sz;	
+//	int i = 0,k;
+//	for (k = 0; k < sz; k++)
+//	{
+//		int count = 0;
+//		for (i = sz - num; i < sz; i++)
+//		{
+//			
+//			{
+//				count++;
+//				if (count == num)
+//					return 1;
+//			}
+//
+//		}
+//		sz++;
+//	}
+//	return 0;
+//}
+//int main()
+//{
+//	char arr1[] = "abcdefabcdef";
+//	char arr2[] = "cdefab";
+//	int ret = judy(arr1, arr2);
+//	if (ret == 1)
+//		printf("Yes");
+//	else
+//		printf("No");
+//	return 0;
+//
+//}
+//#include <stdio.h>
+//int judy(char* arr1, char* arr2)
+//{
+//	int sz = strlen(arr2);
+//	int num = sz;
+//	int i = 0, k;
+//	for (k = 0; k < sz; k++)
+//	{
+//		int count = 0;
+//		for (i = sz - num; i < sz; i++)
+//		{
+//			if (arr1[i] == arr2[i - sz + num])
+//			{
+//				count++;
+//				if (count == num)
+//					return 1;
+//			}
+//
+//		}
+//		sz++;
+//	}
+//	return 0;
+//}
+//int main()
+//{
+//	char arr1[] = "abcdefabcdef";
+//	char arr2[] = "defabc";
+//	int ret = judy(arr1, arr2);
+//	if (ret == 1)
+//		printf("Yes");
+//	else
+//		printf("No");
+//	return 0;
+//
+//}
+//	char arr1[] = "abcdefabcdef";
+//	char arr2[] = "cdefab";
+//	int ret = judy(arr1, arr2);
+//	if (ret == 1)
+//		printf("Yes");
+//	else
+//		printf("No");
+//	return 0;
+//}
+//#define _CRT_SECURE_NO_WARNINGS 1
+//#include <stdio.h>
+//#include <string.h>
+//int judy(char* arr1, char* arr2)
+//{
+//	int len = strlen(arr1);
+//	strncat(arr1, arr1, len);
+//	char* ret = strstr(arr1, arr2);
+//	if (ret == NULL)
+//		return 0;
+//	else
+//		return 1;
+//}
+//int main()
+//{
+//	char arr1[50] = "abcdef";
+//	char arr2[] = "defabc";
+//	int ret = judy(arr1, arr2);
+//	if (ret == 0)
+//		printf("No");
+//	else
+//		printf("Yes");
+//	return 0;
+//}
+#include <stdio.h>
+int main()
+{
+	int arr[9][9] = { 0 };
+	return 0;
+}
