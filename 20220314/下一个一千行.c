@@ -1163,9 +1163,83 @@
 //		printf("Yes");
 //	return 0;
 //}//#
+#define _CRT_SECURE_NO_WARNINGS 1
 #include <stdio.h>
-int main()
-{
-	int arr[9][9] = { 0 };
-	return 0;
-}
+#include <string.h>
+#include <assert.h>
+//char* My_strcpy(char* str1, const char* str2)
+//{
+//	assert(str1 != NULL);
+//	assert(str2 != NULL);
+//	char* ret = str1;
+//	while (*str1++ = *str2++);
+//	return ret;
+//}
+//char* My_strcat(char* dest, const char* srce)
+//{
+//	assert(srce != NULL);
+//	assert(dest != NULL);
+//	int len = strlen(dest);
+//	char* ret = dest;
+//	while (*(dest++ + len) = *srce++)
+//	{
+//		;
+//	}
+//	return ret;
+//}
+//int main()
+//{
+//	char arr1[30] = "abcdefg\0xxxxxxxxx";
+//	char arr2[10] = "bbb";
+//	char* ret = My_strcat(arr1, arr2);
+//	//My_strcpy(arr2, arr1);
+//	printf("%s",ret );
+//	return 0;
+//}
+//int main()
+//{
+//	char arr[] = "zep@sjck@.jansc.edu";
+//	char* p = "@.";
+//	char* ret = NULL;
+//	for (ret = strtok(arr, p); ret != NULL; ret = strtok(NULL, p))
+//	{
+//		printf("%s\n", ret);
+//	}
+//	/*printf("%s\n", strtok(arr, p));
+//	printf("%s\n", strtok(NULL, p));
+//	printf("%s\n", strtok(NULL, p));*/
+//	return 0;
+//}
+//void* My_memmove(void* dest, const void* src, size_t sz)
+//{
+//	void* ret = dest;
+//	int num[1000] = { 0 };
+//	int i = 0;
+//	while (sz--)
+//	{
+//
+//		num[i] = *(char*)src;
+//		i++;
+//		++(char*)src;
+//	}
+//	int k = i;
+//	while (i--)
+//	{
+//		*(char*)dest = num[k - i - 1];
+//		++(char*)dest;
+//	}
+//	return ret;
+//}
+//int main()
+//{
+//	int arr1[] = { 1,2,3,4,5,6,7,8};
+//	int arr2[5] = { 0 };
+//	//将12345,移动到34567；
+//	void* ret = My_memmove(arr1 + 2,arr1,20);
+//	int i = 0;
+//	for (i = 0; i < 8; i++)
+//	{
+//		printf("%d ", arr1[i]);
+//	}
+//	return 0;
+//}
