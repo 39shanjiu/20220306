@@ -1243,3 +1243,9 @@
 //	}
 //	return 0;
 //}
+int main()
+{
+	char a = -128;
+	printf("%d", a);
+	return 0;
+}
