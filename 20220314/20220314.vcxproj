@@ -139,7 +139,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Contact.c" />
     <ClCompile Include="下一个一千行.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Contact.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

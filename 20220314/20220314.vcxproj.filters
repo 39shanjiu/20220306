@@ -18,5 +18,13 @@
     <ClCompile Include="下一个一千行.c">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Contact.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Contact.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

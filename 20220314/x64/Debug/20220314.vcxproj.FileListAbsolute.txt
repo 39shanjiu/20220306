@@ -1,1 +1,3 @@
 C:\C语言\20220314\x64\Debug\20220314.exe
+C:\Users\he\source\repos\20220306\20220314\x64\Debug\20220314.exe
+C:\C语言\source\repos\20220306\20220314\x64\Debug\20220314.exe

@@ -1,3 +1,5 @@
-﻿  下一个一千行.c
-C:\C语言\20220314\下一个一千行.c(68,21): warning C4013: “strlen”未定义；假设外部返回 int
-  20220314.vcxproj -> C:\C语言\20220314\x64\Debug\20220314.exe
+﻿  Contact.c
+C:\C语言\source\repos\20220306\20220314\Contact.c(54,41): warning C4028: 形参 1 与声明不同
+  下一个一千行.c
+  正在生成代码...
+  20220314.vcxproj -> C:\C语言\source\repos\20220306\20220314\x64\Debug\20220314.exe
