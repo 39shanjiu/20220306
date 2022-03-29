@@ -1331,53 +1331,65 @@
 //	return 0;
 //}
 #include "Contact.h"
-void meau()
+//void meau()
+//{
+//	printf("***********************************\n");
+//	printf("***1.ADD                 2.DIV  ***\n");
+//	printf("***3.SEARCH              4.MODIFY**\n");
+//	printf("***5.SHOW                6.SORT  **\n");
+//	printf("***0.EXIT                       ***\n");
+//	printf("***********************************\n");
+//}
+//int main()
+//{
+//	int input;
+//	struct Contact con;
+//	Init_Contact(&con);
+//	do
+//	{		
+//		meau();
+//		printf("请选择服务");
+//		scanf_s("%d", &input);		
+//		switch(input)
+//		{
+//		case 1:
+//			Add_Contact(&con);
+//			break;
+//		case 2:
+//			Div_Contact(&con);
+//			break;
+//		case 3:
+//			printf("请输入你需要查找的姓名:");
+//			Search_Contact(&con);
+//			break;
+//		case 4://修改数据
+//			printf("请输入你需要需改人的姓名:");
+//			Modify_Contact(&con);
+//			break;
+//		case 5:
+//			Show_Contact(&con);
+//			break;
+//		case 6:
+//			//Sort_Contact();
+//			break;
+//		case 0:
+//			printf("退出通讯录\n");
+//			break;
+//		default:
+//			printf("输入错误，请重新输入\n");
+//			break;
+//		}
+//	} while (input);
+//	printf("退出成功");
+//	return 0;
+//}
+typedef struct Node
 {
-	printf("***********************************\n");
-	printf("***1.ADD                 2.DIV  ***\n");
-	printf("***3.SEARCH               4.MODIFY**\n");
-	printf("***5.SHOW                6.SORT  **\n");
-	printf("***0.EXIT                       ***\n");
-	printf("***********************************\n");
-}
+	int data;
+	struct Node* next;
+}Node,*LinkList;
 int main()
 {
-	int input;
-	struct Contact con;
-	Init_Contact(&con);
-	do
-	{		
-		meau();
-		printf("请选择服务");
-		scanf_s("%d", &input);		
-		switch(input)
-		{
-		case 1:
-			Add_Contact(&con);
-			break;
-		case 2:
-			Div_Contact(&con);
-			break;
-		case 3:
-			//Search_Contact();
-			break;
-		case 4:
-			//Modify_Contact();
-			break;
-		case 5:
-			Show_Contact(&con);
-			break;
-		case 6:
-			//Sort_Contact();
-			break;
-		case 0:
-			printf("退出通讯录\n");
-			break;
-		default:
-			printf("输入错误，请重新输入\n");
-			break;
-		}
-	} while (input);
-	printf("退出成功");
+
 	return 0;
 }
