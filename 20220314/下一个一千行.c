@@ -1383,13 +1383,67 @@
 //	printf("退出成功");
 //	return 0;
 //}
-typedef struct Node
+//typedef struct Node
+//{
+//	int data;
+//	struct Node* next;
+//}Node,*LinkList;
+//int main()
+//{
+//
+//	return 0;
+//}
+#include <stdlib.h>
+#include <errno.h>
+//int main()
+//{
+//	int n = 0;
+//	//scanf("%d", &n);
+//	int* p = (int*)malloc(20);
+//	int i;
+//	p = realloc(p, 40);
+//	for (i = 0; i < 10; i++)
+//	{
+//		p[i] = i;
+//		printf("%d ", p[i]);
+//	}
+//	free(p);
+//	p= NULL;
+//	return 0;
+//}
+//void judy(char* p)
+//{
+//	p = (char*)malloc(100);
+//}
+//void text(void)
+//{
+//	char* str = NULL;
+//	judy(str);
+//	strcpy(str, "hello world");
+//	printf(str);
+//}
+//int main()
+//{
+//	text();
+//	return 0;
+//}
+void text()
 {
-	int data;
-	struct Node* next;
-}Node,*LinkList;
+	char* str = NULL;
+	str = (char*)malloc(100);
+	if (str != NULL)
+	{
+		strcpy(str, "hello");
+	}
+	free(str);
+	if (str != NULL)
+	{
+		strcpy(str, "world");
+		printf(str);
+	}
+}
 int main()
 {
-
+	text();
 	return 0;
 }
