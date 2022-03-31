@@ -1427,23 +1427,113 @@
 //	text();
 //	return 0;
 //}
-void text()
+//void text()
+//{
+//	char* str = NULL;
+//	str = (char*)malloc(100);
+//	if (str != NULL)
+//	{
+//		strcpy(str, "hello");
+//	}
+//	free(str);
+//	if (str != NULL)
+//	{
+//		strcpy(str, "world");
+//		printf(str);
+//	}
+//}
+//int main()
+//{
+//	text();
+//	return 0;
+//}
+
+//struct node
+//{
+//	int data;//数据域
+//	struct node* next;//指针域
+//};
+//struct node* creatlist()//返回类型为结构体指针。
+//{
+//	struct node* headnode = (struct node*)malloc(sizeof(struct node));//头节点
+//	struct node* listp;//链表，为什么是结构体指针？指针存放地址?????
+//	headnode->next = NULL;//一开始头节点指向空指针
+//	int i = 0;
+//	for (i = 0; i < 10; i++)
+//	{
+//		listp = (struct node*)malloc(sizeof(struct node));//这里申请的空间大小为什么是node而不是node*
+//		listp->data = i;//指针用->表示，->向data那么主体就是data，int类型（那么说->有解引用的功能？？）
+//		listp->next = headnode->next;//将头节点指向的地址给插入的节点
+//		headnode->next = listp;//头节点指向新插入的节点。
+//	}
+//	return headnode;
+//}
+//
+//
+//int main()
+//{
+//	struct node* list = creatlist();//返回什么类型的数，就用什么类型的数接收。
+//	int i = 0;
+//	for (i = 0; i < 10; i++)
+//	{
+//		if (list != NULL)
+//		{
+//			list = list->next;
+//			printf("%d ", list->data);		
+//		}
+//	}
+//	return 0;
+//}
+typedef struct node
 {
-	char* str = NULL;
-	str = (char*)malloc(100);
-	if (str != NULL)
-	{
-		strcpy(str, "hello");
-	}
-	free(str);
-	if (str != NULL)
-	{
-		strcpy(str, "world");
-		printf(str);
-	}
+	int data;
+	struct node* next;
+}node; 
+struct node* Creat_Node(int data)
+{
+	node* Node = (node*)malloc(sizeof(node));
+	Node->data = data;
+	Node->next = NULL;
+	return Node;
+}
+struct node* Inset_Node(int data, node* headnode)
+{
+	node* Node = (node*)malloc(sizeof(node));
+	Node = Creat_Node(data);
+	Node->next = headnode->next;
+	headnode->next = Node;
+	return headnode;
+
+}
+struct node* Delet_Node(node* headnode)
+{
+	headnode = headnode->next;//next表示的是一个指针，将一个指针指向的地址传给headnode
+	return headnode;
 }
 int main()
 {
-	text();
+	node* headnode = (node*)malloc(sizeof(node));
+	headnode->next = NULL;
+	Creat_Node(0);
+	//Get_List();
+	headnode = Inset_Node(0,headnode);//传的是地址	
+	headnode = Inset_Node(3, headnode);
+	headnode = Inset_Node(4, headnode);
+	headnode = Inset_Node(5, headnode);
+	headnode = Inset_Node(6, headnode);
+	headnode = Delet_Node(headnode);
+	headnode = Inset_Node(5, headnode);
+	headnode = headnode->next;
+	int i = 0;
+	for (i = 1; i < 10; i++)
+	{
+		if (headnode->next != NULL)
+		{
+			printf("%d ", headnode->data);
+			headnode = headnode->next;
+		}
+		else
+			break;
+	}
 	return 0;
 }
