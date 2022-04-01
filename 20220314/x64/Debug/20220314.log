@@ -1,3 +1,2 @@
-﻿  链表自学.c
-C:\C语言\source\repos\20220306\20220314\链表自学.c(46,38): warning C4047: “=”:“LinkList”与“LinkList *”的间接级别不同
-C:\C语言\source\repos\20220306\20220314\链表自学.c(46): error C4700: 使用了未初始化的局部变量“L”
+﻿下一个一千行.obj : error LNK2005: main 已经在 text.obj 中定义
+C:\C语言\source\repos\20220306\20220314\x64\Debug\20220314.exe : fatal error LNK1169: 找到一个或多个多重定义的符号

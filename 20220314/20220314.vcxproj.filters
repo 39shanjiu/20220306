@@ -24,6 +24,9 @@
     <ClCompile Include="链表自学.c">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="text.c">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Contact.h">

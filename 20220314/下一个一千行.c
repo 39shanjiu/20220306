@@ -1330,59 +1330,61 @@
 //
 //	return 0;
 //}
+#include <stdlib.h>
+#include <errno.h>
 #include "Contact.h"
-//void meau()
-//{
-//	printf("***********************************\n");
-//	printf("***1.ADD                 2.DIV  ***\n");
-//	printf("***3.SEARCH              4.MODIFY**\n");
-//	printf("***5.SHOW                6.SORT  **\n");
-//	printf("***0.EXIT                       ***\n");
-//	printf("***********************************\n");
-//}
-//int main()
-//{
-//	int input;
-//	struct Contact con;
-//	Init_Contact(&con);
-//	do
-//	{		
-//		meau();
-//		printf("请选择服务");
-//		scanf_s("%d", &input);		
-//		switch(input)
-//		{
-//		case 1:
-//			Add_Contact(&con);
-//			break;
-//		case 2:
-//			Div_Contact(&con);
-//			break;
-//		case 3:
-//			printf("请输入你需要查找的姓名:");
-//			Search_Contact(&con);
-//			break;
-//		case 4://修改数据
-//			printf("请输入你需要需改人的姓名:");
-//			Modify_Contact(&con);
-//			break;
-//		case 5:
-//			Show_Contact(&con);
-//			break;
-//		case 6:
-//			//Sort_Contact();
-//			break;
-//		case 0:
-//			printf("退出通讯录\n");
-//			break;
-//		default:
-//			printf("输入错误，请重新输入\n");
-//			break;
-//		}
-//	} while (input);
-//	printf("退出成功");
-//	return 0;
-//}
+void meau()
+{
+	printf("***********************************\n");
+	printf("***1.ADD                 2.DIV  ***\n");
+	printf("***3.SEARCH              4.MODIFY**\n");
+	printf("***5.SHOW                6.SORT  **\n");
+	printf("***0.EXIT                       ***\n");
+	printf("***********************************\n");
+}
+int main()
+{
+	int input;
+	struct Contact con;
+	Init_Contact(&con);
+	do
+	{		
+		meau();
+		printf("请选择服务");
+		scanf_s("%d", &input);		
+		switch(input)
+		{
+		case 1:
+			Add_Contact(&con);
+			break;
+		case 2:
+			Div_Contact(&con);
+			break;
+		case 3:
+			printf("请输入你需要查找的姓名:");
+			Search_Contact(&con);
+			break;
+		case 4://修改数据
+			printf("请输入你需要需改人的姓名:");
+			Modify_Contact(&con);
+			break;
+		case 5:
+			Show_Contact(&con);
+			break;
+		case 6:
+			//Sort_Contact();
+			break;
+		case 0:
+			printf("退出通讯录\n");
+			break;
+		default:
+			printf("输入错误，请重新输入\n");
+			break;
+		}
+	} while (input);
+	printf("退出成功");
+	return 0;
+}
 //typedef struct Node
 //{
 //	int data;
@@ -1393,8 +1395,7 @@
 //
 //	return 0;
 //}
-#include <stdlib.h>
-#include <errno.h>
+
 //int main()
 //{
 //	int n = 0;
@@ -1484,56 +1485,60 @@
 //	}
 //	return 0;
 //}
-typedef struct node
-{
-	int data;
-	struct node* next;
-}node; 
-struct node* Creat_Node(int data)
-{
-	node* Node = (node*)malloc(sizeof(node));
-	Node->data = data;
-	Node->next = NULL;
-	return Node;
-}
-struct node* Inset_Node(int data, node* headnode)
-{
-	node* Node = (node*)malloc(sizeof(node));
-	Node = Creat_Node(data);
-	Node->next = headnode->next;
-	headnode->next = Node;
-	return headnode;
 
-}
-struct node* Delet_Node(node* headnode)
-{
-	headnode = headnode->next;//next表示的是一个指针，将一个指针指向的地址传给headnode
-	return headnode;
-}
-int main()
-{
-	node* headnode = (node*)malloc(sizeof(node));
-	headnode->next = NULL;
-	Creat_Node(0);
-	//Get_List();
-	headnode = Inset_Node(0,headnode);//传的是地址	
-	headnode = Inset_Node(3, headnode);
-	headnode = Inset_Node(4, headnode);
-	headnode = Inset_Node(5, headnode);
-	headnode = Inset_Node(6, headnode);
-	headnode = Delet_Node(headnode);
-	headnode = Inset_Node(5, headnode);
-	headnode = headnode->next;
-	int i = 0;
-	for (i = 1; i < 10; i++)
-	{
-		if (headnode->next != NULL)
-		{
-			printf("%d ", headnode->data);
-			headnode = headnode->next;
-		}
-		else
-			break;
-	}
-	return 0;
-}
+
+
+//尝试链表，虽然菜，但好歹是做出来了。
+//typedef struct node
+//{
+//	int data;
+//	struct node* next;
+//}node; 
+//struct node* Creat_Node(int data)
+//{
+//	node* Node = (node*)malloc(sizeof(node));
+//	Node->data = data;
+//	Node->next = NULL;
+//	return Node;
+//}
+//struct node* Inset_Node(int data, node* headnode)
+//{
+//	node* Node = (node*)malloc(sizeof(node));
+//	Node = Creat_Node(data);
+//	Node->next = headnode->next;
+//	headnode->next = Node;
+//	return headnode;
+//
+//}
+//struct node* Delet_Node(node* headnode)
+//{
+//	headnode = headnode->next;//next表示的是一个指针，将一个指针指向的地址传给headnode
+//	return headnode;
+//}
+//int main()
+//{
+//	node* headnode = (node*)malloc(sizeof(node));
+//	headnode->next = NULL;
+//	Creat_Node(0);
+//	//Get_List();
+//	headnode = Inset_Node(0,headnode);//传的是地址	
+//	headnode = Inset_Node(3, headnode);
+//	headnode = Inset_Node(4, headnode);
+//	headnode = Inset_Node(5, headnode);
+//	headnode = Inset_Node(6, headnode);
+//	headnode = Delet_Node(headnode);
+//	headnode = Inset_Node(5, headnode);
+//	headnode = headnode->next;
+//	int i = 0;
+//	for (i = 1; i < 10; i++)
+//	{
+//		if (headnode->next != NULL)
+//		{
+//			printf("%d ", headnode->data);
+//			headnode = headnode->next;
+//		}
+//		else
+//			break;
+//	}
+//	return 0;
+//}
