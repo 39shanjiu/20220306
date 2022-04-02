@@ -1330,71 +1330,71 @@
 //
 //	return 0;
 //}
-#include <stdlib.h>
-#include <errno.h>
-#include "Contact.h"
-void meau()
-{
-	printf("***********************************\n");
-	printf("***1.ADD                 2.DIV  ***\n");
-	printf("***3.SEARCH              4.MODIFY**\n");
-	printf("***5.SHOW                6.SORT  **\n");
-	printf("***0.EXIT                       ***\n");
-	printf("***********************************\n");
-}
-int main()
-{
-	int input;
-	struct Contact con;
-	Init_Contact(&con);
-	do
-	{		
-		meau();
-		printf("请选择服务");
-		scanf_s("%d", &input);		
-		switch(input)
-		{
-		case 1:
-			Add_Contact(&con);
-			break;
-		case 2:
-			Div_Contact(&con);
-			break;
-		case 3:
-			printf("请输入你需要查找的姓名:");
-			Search_Contact(&con);
-			break;
-		case 4://修改数据
-			printf("请输入你需要需改人的姓名:");
-			Modify_Contact(&con);
-			break;
-		case 5:
-			Show_Contact(&con);
-			break;
-		case 6:
-			//Sort_Contact();
-			break;
-		case 0:
-			printf("退出通讯录\n");
-			break;
-		default:
-			printf("输入错误，请重新输入\n");
-			break;
-		}
-	} while (input);
-	printf("退出成功");
-	return 0;
-}
-//typedef struct Node
+//#include <stdlib.h>
+//#include <errno.h>
+//#include "Contact.h"
+//void meau()
 //{
-//	int data;
-//	struct Node* next;
-//}Node,*LinkList;
+//	printf("***********************************\n");
+//	printf("***1.ADD                 2.DIV  ***\n");
+//	printf("***3.SEARCH              4.MODIFY**\n");
+//	printf("***5.SHOW                6.SORT  **\n");
+//	printf("***0.EXIT                       ***\n");
+//	printf("***********************************\n");
+//}
 //int main()
 //{
-//
+//	int input;
+//	struct Contact con;
+//	Init_Contact(&con);
+//	do
+//	{		
+//		meau();
+//		printf("请选择服务");
+//		scanf_s("%d", &input);		
+//		switch(input)
+//		{
+//		case 1:
+//			Add_Contact(&con);
+//			break;
+//		case 2:
+//			Div_Contact(&con);
+//			break;
+//		case 3:
+//			printf("请输入你需要查找的姓名:");
+//			Search_Contact(&con);
+//			break;
+//		case 4://修改数据
+//			printf("请输入你需要需改人的姓名:");
+//			Modify_Contact(&con);
+//			break;
+//		case 5:
+//			Show_Contact(&con);
+//			break;
+//		case 6:
+//			//Sort_Contact();
+//			break;
+//		case 0:
+//			printf("退出通讯录\n");
+//			break;
+//		default:
+//			printf("输入错误，请重新输入\n");
+//			break;
+//		}
+//	} while (input);
+//	printf("退出成功");
 //	return 0;
 //}
+////typedef struct Node
+////{
+////	int data;
+////	struct Node* next;
+////}Node,*LinkList;
+////int main()
+////{
+////
+////	return 0;
+////}
 
 //int main()
 //{
@@ -1542,3 +1542,54 @@ int main()
 //	}
 //	return 0;
 //}
+#include <stdlib.h>
+#include <errno.h>
+//int main()
+//{
+//	FILE* f = fopen("test.txt", "r");
+//	if (f == NULL)
+//	{
+//		printf("%s\n", strerror(errno));
+//	}
+//	//fputc('h', f);
+//	//fputc('e', f);
+//	//fputc('l', f);
+//	//fputc('l', f);
+//	//fputc('o', f);
+//	int ch = fgetc(f);
+//	printf("%c", ch);
+//	ch = fgetc(f);
+//	printf("%c", ch);
+//	ch = fgetc(f);
+//	printf("%c", ch);
+//	ch = fgetc(f);
+//	printf("%c", ch);
+//	ch = fgetc(f);
+//	printf("%c", ch);
+//	fclose(f);
+//	f = NULL;
+//	return 0;
+//}
+int main()
+{
+	char arr[1024] = { 0 };
+	//FILE* f = fopen("test.txt", "w");
+	/*if (f == NULL)
+	{
+		printf("%s\n", strerror(errno));
+		return 0;
+	}*/
+	//fgets(arr, 1024, f);//读取一行
+	//fputs("hello", f);
+	//fputs("\nworld\n", f);
+	FILE* pf = fopen("test.txt", "r");
+	fgets(arr, 1024, pf);
+	printf("%s", arr);
+	fgets(arr, 1024, pf);
+	printf("%s", arr);
+	//fclose(f);
+	fclose(pf);
+	pf = NULL;
+	//f = NULL;
+	return 0;
+}
