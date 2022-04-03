@@ -1330,16 +1330,16 @@
 //
 //	return 0;
 //}
-//#include <stdlib.h>
-//#include <errno.h>
-//#include "Contact.h"
+#include <stdlib.h>
+#include <errno.h>
+#include "Contact.h"
 //void meau()
 //{
 //	printf("***********************************\n");
 //	printf("***1.ADD                 2.DIV  ***\n");
 //	printf("***3.SEARCH              4.MODIFY**\n");
 //	printf("***5.SHOW                6.SORT  **\n");
-//	printf("***0.EXIT                       ***\n");
+//	printf("***7.SAVE                0.EXIT  **\n");
 //	printf("***********************************\n");
 //}
 //int main()
@@ -1374,7 +1374,11 @@
 //		case 6:
 //			//Sort_Contact();
 //			break;
+//		case 7:
+//			Save_Contact(&con);
+//			break;
 //		case 0:
+//			Save_Contact(&con);
 //			printf("退出通讯录\n");
 //			break;
 //		default:
@@ -1385,6 +1389,22 @@
 //	printf("退出成功");
 //	return 0;
 //}
+// 
+// 
+// 
+// 
+// 
+// 
+// 
+// 
+// 
+// 
+// 
+// 
+// 
+// 
+// 
+// 
 ////typedef struct Node
 ////{
 ////	int data;
@@ -1542,8 +1562,7 @@
 //	}
 //	return 0;
 //}
-#include <stdlib.h>
-#include <errno.h>
+
 //int main()
 //{
 //	FILE* f = fopen("test.txt", "r");
@@ -1570,26 +1589,88 @@
 //	f = NULL;
 //	return 0;
 //}
-int main()
-{
-	char arr[1024] = { 0 };
-	//FILE* f = fopen("test.txt", "w");
-	/*if (f == NULL)
-	{
-		printf("%s\n", strerror(errno));
-		return 0;
-	}*/
-	//fgets(arr, 1024, f);//读取一行
-	//fputs("hello", f);
-	//fputs("\nworld\n", f);
-	FILE* pf = fopen("test.txt", "r");
-	fgets(arr, 1024, pf);
-	printf("%s", arr);
-	fgets(arr, 1024, pf);
-	printf("%s", arr);
-	//fclose(f);
-	fclose(pf);
-	pf = NULL;
-	//f = NULL;
-	return 0;
-}
+//int main()
+//{
+//	char arr[1024] = { 0 };
+//	//FILE* f = fopen("test.txt", "w");
+//	/*if (f == NULL)
+//	{
+//		printf("%s\n", strerror(errno));
+//		return 0;
+//	}*/
+//	//fgets(arr, 1024, f);//读取一行
+//	//fputs("hello", f);
+//	//fputs("\nworld\n", f);
+//	FILE* pf = fopen("test.txt", "r");
+//	fgets(arr, 1024, pf);
+//	printf("%s", arr);
+//	fgets(arr, 1024, pf);
+//	printf("%s", arr);
+//	//fclose(f);
+//	fclose(pf);
+//	pf = NULL;
+//	//f = NULL;
+//	return 0;
+//}
+//struct node
+//{
+//	float x;
+//	int n;
+//	char s;
+//	char arr[15];
+//
+//
+//};
+//int main()
+//{
+//	struct node s = { 0 };
+//	FILE* f = fopen("text,txt", "r");
+//	//struct node s = { 3.14f,10,'l',"hellowrold" };
+//	if (f == NULL)
+//	{
+//		return 0;
+//	}
+//	fscanf(f, "%f %d %c %s", &(s.x), &(s.n), &(s.s), s.arr);
+//	printf("%f %d %c %s", s.x, s.n, s.s, s.arr);
+//	fclose(f);
+//	f = NULL;
+//
+//		return 0;
+//}
+//struct node
+//{
+//	float x;
+//	int n;
+//	char s;
+//	char arr[15];
+//
+//
+//};
+//int main()
+//[
+//	return 0;
+//}
+//struct S
+//{
+//	char name[20];
+//	int age;
+//	double score;
+//};
+//
+//int main()
+//{
+//	//struct S s = { "张三" , 18, 55.6 };
+//	
+//	struct S s = { 0 };
+//	FILE* f = fopen("text.txt", "rb");
+//	if (f == NULL)
+//	{
+//		return 0;
+//	}
+//	fread(&s, sizeof(struct S), 1, f);
+//	printf("%s,%d %lf", s.name, s.age, s.score);
+//	//fwrite(&s, sizeof(struct S), 1, f);   Z
+//	fclose(f);
+//	f = NULL;
+//	return 0;
+//}  
