@@ -1,10 +1,8 @@
 #define Max_Name 5
-
 #define Max_Telep 5
-
 #define Max_Sex 10
-
 #define Max 1000
+#define FALUAT_SZ 3
 
 #include <stdio.h>
 
@@ -26,15 +24,28 @@ struct PeoInfo
 
 struct Contact
 {
-	struct PeoInfo date[Max];
-	int size;
-
+	struct PeoInfo* date;
+	int size;// 数组下标
+	int capacity;//可接纳的元素个数
 };
+
 void Init_Contact(struct Contact* ps);
+
 void Add_Contact(struct Contact*ps);
+
 void Div_Contact(struct Contact* ps);
+
 void Show_Contact(struct Contact* ps);
+
 void Search_Contact(struct Contact* ps);
+
 int FindPeoInfo(struct Contact* ps);
+
 void Modify_Contact(struct Contact* ps);
 
+void CheckCapcity(struct Contact*ps);
+
+
+void Save_Contact(struct Contact* ps);
+
+void Load_Contact(struct Contact* ps);

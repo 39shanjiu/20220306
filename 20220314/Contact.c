@@ -2,17 +2,49 @@
 #include "Contact.h"
 void Init_Contact(struct Contact* ps)
 {
-	memset(ps->date, 0, sizeof(ps->date));
+	ps->date = malloc(sizeof(struct PeoInfo)*FALUAT_SZ);
 	ps->size = 0;
+	ps->capacity = FALUAT_SZ;
+	Load_Contact(ps);
+}
+void CheckCapcity(struct Contact* ps);
+
+
+void Load_Contact(struct Contact* ps)
+{
+	struct PeoInfo tmp = { 0 };
+	FILE* f = fopen("contact.dat", "rb");
+	if (f == NULL)
+	{
+		printf("Load_Contact:%s\n", strerror(errno));
+		return;
+	}
+	while (fread(&tmp, sizeof(struct PeoInfo), 1, f))
+	{
+		CheckCapcity(ps);
+		ps->date[ps->size] = tmp;
+		ps->size++;
+	}
+	fclose(f);
+	f = NULL;
+}
+void CheckCapcity(struct Contact* ps)
+{
+	if (ps->size == ps->capacity)
+	{
+		struct PeoInfo* ptr = realloc(ps->date, (ps->capacity + 2) * sizeof(struct PeoInfo));
+		if (ptr != NULL)
+		{
+			ps->capacity += 2;
+			ps->date = ptr;
+			printf("next\n");
+		}
+
+	}
 }
 void Add_Contact(struct Contact* ps)
 {
-	if (ps->size == Max)
-	{
-		printf("通讯录已满\n");
-	}
-	else
-	{
+	CheckCapcity(ps);
 		printf("请输入姓名：");
 		scanf("%s", ps->date[ps->size].name);
 		printf("请输入性别：");
@@ -24,7 +56,7 @@ void Add_Contact(struct Contact* ps)
 		
 		ps->size++;
 		printf("添加成功\n");
-	}
+	
 }
 int FindPeoInfo(const struct Contact* ps)
 {
@@ -104,4 +136,22 @@ void Modify_Contact(struct Contact* ps)
 		scanf("%d", &(ps->date[i].age));
 	}
 	printf("需改成功\n");
+}
+
+void Save_Contact(struct Contact* ps)
+{
+	FILE* f = fopen("contact.dat", "wb");
+	if (f == NULL)
+	{
+		printf("Save_Contact:%s\n", strerror(errno));
+		return;
+	}
+	int i = 0;
+	for (i = 0; i <ps->size; i++)
+	{
+		fwrite(&(ps->date[i]), sizeof(struct PeoInfo), 1, f);
+	}
+	fclose(f);
+	f = NULL;
+
 }

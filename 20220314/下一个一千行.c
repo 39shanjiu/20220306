@@ -1674,3 +1674,64 @@
 //	f = NULL;
 //	return 0;
 //}  xxxxxxxxxxxxxxxxxx
+//#pragma once
+//#define DEBUG
+//
+//int main()
+//{
+//#ifdef DEBUG
+//	printf("hehe\n");
+//#endif
+//#if 3==1
+//	printf("hehe");
+//#elif 2==1
+//	printf("haha");
+//#else 
+//	printf("gege");
+//#endif
+//	 
+//	return 0;
+//}
+
+#include <stddef.h>
+//
+//struct S
+//{
+//	char a;
+//	int b;
+//	char c;
+//};
+//
+//#define OFFSETOF(struct_name,member_name) (int)&(((struct_name*)0)->member_name) 
+//
+//int main()
+//{
+//	struct S s;
+//	printf("%d ", offsetof(struct S, a));
+//	printf("%d ", offsetof(struct S, b));
+//	printf("%d ", offsetof(struct S, c));
+//	printf("\n");
+//	printf("%d ", OFFSETOF(struct S, a));
+//	printf("%d ", OFFSETOF(struct S, b));
+//	printf("%d ", OFFSETOF(struct S, c));
+//	return 0;
+//}
+
+int main()
+{
+	int arr[] = { 1,2,3,4,5,6,1,2,3,4,5,6,7,8 };
+	int sz = sizeof(arr) / sizeof(arr[0]);
+	int i = 0,k = 0;
+	for (i = 0; i < sz; i++)
+	{
+		int count = 0;
+		for (k = 0; k < sz; k++)
+		{
+			if (arr[k] == arr[i])
+				count++;
+		}
+		if (count == 1)
+			printf("%d ", arr[i]);
+	}
+	return 0;
+}

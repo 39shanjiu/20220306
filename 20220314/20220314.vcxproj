@@ -140,9 +140,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Contact.c" />
-    <ClCompile Include="text.c" />
     <ClCompile Include="下一个一千行.c" />
-    <ClCompile Include="链表自学.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Contact.h" />

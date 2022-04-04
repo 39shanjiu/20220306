@@ -1,2 +1,2 @@
-﻿下一个一千行.obj : error LNK2005: main 已经在 text.obj 中定义
-C:\C语言\source\repos\20220306\20220314\x64\Debug\20220314.exe : fatal error LNK1169: 找到一个或多个多重定义的符号
+﻿  下一个一千行.c
+  20220314.vcxproj -> C:\C语言\source\repos\20220306\20220314\x64\Debug\20220314.exe
