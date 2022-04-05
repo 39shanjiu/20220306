@@ -84,42 +84,83 @@
 
 
 
-//
-// 这是字符串中KMP算法中next值的实现
-// next数下标+1表示当前字符处于比较的字符串数量
-// 比如，next下标为2，则当前比较的是字符串数量是3.
-// 那么next[2] 表示什么呢？表示当前数量的字符串相似程度。
-// 这里见《大话数据结构》p116.
-//
-void Get_Next(char* T, int* next, int sz)
+
+ /*这是字符串中KMP算法中next值的实现
+ next数下标+1表示当前字符处于比较的字符串数量
+ 比如，next下标为2，则当前比较的是字符串数量是3.
+ 那么next[2] 表示什么呢？表示当前数量的字符串相似程度。
+ 这里见《大话数据结构》p116.*/
+
+void Get_Next(char* T, int next[], int sz)
 {
-	//这里next值的实现相当于子串中的相似程度。（我知道不好理解，但我也解释不来啊😭
+	//这里next值的实现相当于子串中的相似程度。我知道不好理解，但我也解释不来啊😭
 	int i = 0, k = 0;//这里可以理解为快慢指针（嗯~ o(*￣▽￣*)o）
 	next[0] = 0;//next[0]一定为0
-	for(i = 1;i < sz;i++)//注意i不会后退，最多停留因此为O（n）；
+	next[1] = 1;//
+	//这里算法要实现的重点是看表头与表尾的重合个数
+	//这里i是一直向前的不会后退，最多停留。
+	//具体对应规则详见P-117
+	//这里就三点
+	//第一点，next[i] 的数是相对应的数再加上一。
+	//的二点，无论next[i]有多大，如果i+1不对应，那么后面的数只可能为1和2
+	//i+1与0相同就是2；
+	//第三点（重点），k要同时担任表头的下标与next[i]的赋值。所以下面最主要的处理
+	//就是同时处理好k与两者的关系。
+	for(i = 2;i < sz;i++)//注意i不会后退，最多停留因此为O（n）；
 	{
-	    if (k == 0 || T[i] == T[k])//???这不就绕出来了嘛
-			//这里k==0是重置后重新开始比较后面的字符串，
-			//那后面的呢？当然是相同计数+1啊.
+		//由于next[0]与next[1]是确定的所以i直接从二开始
+		//为什么是二，因为i要担任next下标，而比较时要比较的字符个数
+		// 等于i的值，所以字符串中最后一位会比较不到，一位i不能大过字符串的长度
+		// 为什么i不能大过字符串的长度？因为next的要与字符串的长度匹配；
+		// 具体为什么见P-116
+		//
+		if (T[i - 1] == T[k])//k = 0进来就直接为二或者不为0也时+1+1增加
 		{
+			//
 			k++;
-			next[i] = k;
+			next[i] = k + 1;
+		}
+		else if (k == 0 && T[i - 1] != T[k])//不同那就是1，不同i会在下一次循环停留一次
+		{
+			//给k = 0；好度过这一次的next[i];
+			k++;
+			next[i] = 1;
 		}
 		else
 		{
-			k = 0;//不同，看重新赋值
-			i--;//i要保留原地。
+			k = 0;
+			i--;
+		}
+		
+	}
+}
+
+//这里为升级版的next具体原理，看图解还好
+//换成了代码一脸懵。
+
+
+void Get_Nextval(char* T, int* nextval, int sz)
+{
+	int i = 1, k = 0;
+	nextval[0] = 0;
+	for(i = 1; i < sz; i++)
+	{
+		if (T[i] == T[nextval[i] - 1])
+		{
+			int ret = nextval[i] - 1;
+			nextval[i] = nextval[ret];
 		}
 	}
 }
 
 int Index_KMP(char* s, char* T, int pos)
 {
-	int i = pos;//i用于表示主串s的下标。
+	int i = pos;//用于表示主串s的下标。
 	int k = 0;//k用于表示子串T的下标。
 	int sz = strlen(T);
-	int next[255];
+	int next[10];	
 	Get_Next(T, next, sz);//获取next数组。
+	Get_Nextval(T, next, sz);
 	int len = strlen(s);
 	//开始在主串中查找字串。
 	for (i = pos; i < len && k < sz; i++)
@@ -129,7 +170,7 @@ int Index_KMP(char* s, char* T, int pos)
 		else//相同到一半又不相同了怎么办（😔摊手）
 			//这里是KMP算法的精妙之处。
 		{
-			k = next[k - 1];//next[k - 1]表示当前子串
+			k = next[k - 1];//next[k - 1]表示当前子串开始的位置，
 			//这里k与next[k - 1]表示的位子相同，数组从0开始嘛。
 			//这里从next[k - 1]得来的值k，是当前子串长度的表头与表尾的相似度。详见P115.
 			// 相同多少就跳过多少。
@@ -141,17 +182,50 @@ int Index_KMP(char* s, char* T, int pos)
 	if (k == sz)
 		return i - sz;
 	else
-		return 0;
+		return -1;
 }
 
 int main()
 {
-	char S[] = "nmjiyiaabcdexhjklknl";
-	char T[] = "abcdex";
+	char S[] = "nmjiyababaaabahjklknl";
+	char T[] = "ababaaaba";
 	
 	int ret = Index_KMP(S,T,0);
-	printf("%d ", ret);
+	printf("在主串下标为 %d 的位子 ", ret);
 	
 	return 0;
 }
+
+//
+//int main()
+//{
+//	char T[] = "abcabx";
+//	int sz = 6;
+//	int next[6];
+//	int i = 0, k = 0, count = 1;//这里可以理解为快慢指针（嗯~ o(*￣▽￣*)o）
+//	next[0] = 0;//next[0]一定为0
+//	next[1] = 1;
+//	for (i = 2; i < sz; i++)//注意i不会后退，最多停留因此为O（n）；
+//	{
+//		if (T[i - 1] == T[k])
+//		{
+//			k++;
+//			next[i] = k + 1;
+//		}
+//		else if (k == 0 && T[i - 1] != T[k])
+//		{
+//			k++;
+//			next[i] = 1;
+//		}
+//		else
+//		{
+//			k = 0;
+//			i--;
+//		}
+//
+//	}
+//	return 0;
+//}
+
+
 
