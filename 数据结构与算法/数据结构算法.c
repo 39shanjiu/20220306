@@ -357,3 +357,47 @@ int main()
 //		printf("hehe");
 //	return 0;
 //}
+
+void BT(struct TreeNode* stk, struct TreeNode* t, int val, struct TreeNode* prev)
+{
+    if (!t)
+        return;
+    if (val > t->val)
+    {
+        prev = t;
+        t = t->left;
+        if (t->val > val)
+        {
+            struct TreeNode* m = t->right;
+            while (m && m->val > val)
+            {
+                m = m->val;
+            }
+        }
+    }
+    else
+    {
+        prev = t;
+
+    }
+
+
+}
+
+struct TreeNode* insertIntoBST(struct TreeNode* root, int val) {
+    struct TreeNode* stk = (struct TreeNode*)malloc(sizeof(struct TreeNode)), * t = root, * prev;
+    stk->val = val;
+    stk->right = NULL;
+    stk->left = NULL;
+    BT(stk, t, val, prev);
+    if (stk->right && stk->left)
+    {
+        if (val > prev->val)
+        {
+            prev->right = stk;
+        }
+        else
+            prev->left = stk;
+    }
+    return root;
+}
