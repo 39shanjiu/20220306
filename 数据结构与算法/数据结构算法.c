@@ -290,61 +290,61 @@
 //    printf("%d ",count);
 //	return 0;
 //}
-
-
-struct TreeNode
-{
-    int val;
-    struct TreeNode* left;
-    struct TreeNode* right;
-};
-
-
-int* postorderTraversal(struct TreeNode* root, int* returnSize) {
-    int* arr = (int*)malloc(sizeof(int) * 101);
-    *returnSize = 0;
-    struct TreeNode* stk[101], * node = root, * prve = NULL;
-    int sum = 0;
-    while (sum > 0 || node)
-    {
-        while (node)
-        {
-            stk[sum++] = node;
-            node = node->left;
-        }
-        node = stk[--sum];
-        if (node->right == NULL || node->right == prve)
-        {
-            arr[(*returnSize)++] = node->val;
-            prve = node;
-            node = NULL;
-        }
-        else
-        {
-            stk[sum++] = node;
-            node = node->right;
-        }
-    }
-    return arr;
-}
-
-
-int main()
-{
-    int returnSize = 0;
-    struct TreeNode* root, * t = root;
-    root->val = 1;
-    root->left = NULL;
-    t = t->right;
-    t->val = 2;
-    t->right = NULL;
-    t = t->left;
-    t->val = 3;
-    t->right = NULL;
-    t->left = NULL;
-    postorderTraversal(root, &returnSize);
-    return 0;
-}
+//
+//
+//struct TreeNode
+//{
+//    int val;
+//    struct TreeNode* left;
+//    struct TreeNode* right;
+//};
+//
+//
+//int* postorderTraversal(struct TreeNode* root, int* returnSize) {
+//    int* arr = (int*)malloc(sizeof(int) * 101);
+//    *returnSize = 0;
+//    struct TreeNode* stk[101], * node = root, * prve = NULL;
+//    int sum = 0;
+//    while (sum > 0 || node)
+//    {
+//        while (node)
+//        {
+//            stk[sum++] = node;
+//            node = node->left;
+//        }
+//        node = stk[--sum];
+//        if (node->right == NULL || node->right == prve)
+//        {
+//            arr[(*returnSize)++] = node->val;
+//            prve = node;
+//            node = NULL;
+//        }
+//        else
+//        {
+//            stk[sum++] = node;
+//            node = node->right;
+//        }
+//    }
+//    return arr;
+//}
+//
+//
+//int main()
+//{
+//    int returnSize = 0;
+//    struct TreeNode* root, * t = root;
+//    root->val = 1;
+//    root->left = NULL;
+//    t = t->right;
+//    t->val = 2;
+//    t->right = NULL;
+//    t = t->left;
+//    t->val = 3;
+//    t->right = NULL;
+//    t->left = NULL;
+//    postorderTraversal(root, &returnSize);
+//    return 0;
+//}
 
 //
 //int main()
@@ -357,47 +357,120 @@ int main()
 //		printf("hehe");
 //	return 0;
 //}
+//
+//void BT(struct TreeNode* stk, struct TreeNode* t, int val, struct TreeNode* prev)
+//{
+//    if (!t)
+//        return;
+//    if (val > t->val)
+//    {
+//        prev = t;
+//        t = t->left;
+//        if (t->val > val)
+//        {
+//            struct TreeNode* m = t->right;
+//            while (m && m->val > val)
+//            {
+//                m = m->val;
+//            }
+//        }
+//    }
+//    else
+//    {
+//        prev = t;
+//
+//    }
+//
+//
+//}
+//
+//struct TreeNode* insertIntoBST(struct TreeNode* root, int val) {
+//    struct TreeNode* stk = (struct TreeNode*)malloc(sizeof(struct TreeNode)), * t = root, * prev;
+//    stk->val = val;
+//    stk->right = NULL;
+//    stk->left = NULL;
+//    BT(stk, t, val, prev);
+//    if (stk->right && stk->left)
+//    {
+//        if (val > prev->val)
+//        {
+//            prev->right = stk;
+//        }
+//        else
+//            prev->left = stk;
+//    }
+//    return root;
+//}
 
-void BT(struct TreeNode* stk, struct TreeNode* t, int val, struct TreeNode* prev)
-{
-    if (!t)
-        return;
-    if (val > t->val)
+
+struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2) {
+    int count = 0;
+    struct ListNode* t = (struct ListNode*)malloc(sizeof(struct ListNode)), * prev;
+    t = l2;
+    while (l1 && l2)
     {
-        prev = t;
-        t = t->left;
-        if (t->val > val)
+        int a = l1->val;
+        int b = l2->val;
+        int c = a + b + count;
+        if (c >= 10)
         {
-            struct TreeNode* m = t->right;
-            while (m && m->val > val)
-            {
-                m = m->val;
-            }
-        }
-    }
-    else
-    {
-        prev = t;
-
-    }
-
-
-}
-
-struct TreeNode* insertIntoBST(struct TreeNode* root, int val) {
-    struct TreeNode* stk = (struct TreeNode*)malloc(sizeof(struct TreeNode)), * t = root, * prev;
-    stk->val = val;
-    stk->right = NULL;
-    stk->left = NULL;
-    BT(stk, t, val, prev);
-    if (stk->right && stk->left)
-    {
-        if (val > prev->val)
-        {
-            prev->right = stk;
+            l2->val = c - 10;
+            count = 1;
         }
         else
-            prev->left = stk;
+        {
+            l2->val = c;
+            count = 0;
+        }
+        prev = l2;
+        l2 = l2->next;
+        l1 = l1->next;
     }
-    return root;
+    if (l2 == NULL && l1 != NULL)
+    {
+        prev->next = l1;
+        while (l1 && count == 1)
+        {
+            int a = l1->val + count;
+            if (a >= 10)
+            {
+                l1->val = a - 10;
+                count = 1;
+            }
+            else
+            {
+                l1->val = a;
+                count = 0;
+            }
+            prev = l1;
+            l1 = l1->next;
+        }
+    }
+    else if (l1 == NULL && l2 != NULL && count == 1)
+    {
+        while (l2 && count == 1)
+        {
+            int a = l2->val + count;
+            if (a >= 10)
+            {
+                l2->val = a - 10;
+                count = 1;
+            }
+            else
+            {
+                l2->val = a;
+                count = 0;
+            }
+            prev = l2;
+            l2 = l2->next;
+        }
+    }
+    if (!l2 && !l1 && count == 1)
+    {
+        struct ListNode* node = (struct ListNode*)malloc(sizeof(struct ListNode));
+        node->val = 1;
+        prev->next = node;
+        node->next = NULL;
+    }
+    return t;
 }
