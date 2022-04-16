@@ -402,75 +402,123 @@
 //    return root;
 //}
 
+//
+//struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2) {
+//    int count = 0;
+//    struct ListNode* t = (struct ListNode*)malloc(sizeof(struct ListNode)), * prev;
+//    t = l2;
+//    while (l1 && l2)
+//    {
+//        int a = l1->val;
+//        int b = l2->val;
+//        int c = a + b + count;
+//        if (c >= 10)
+//        {
+//            l2->val = c - 10;
+//            count = 1;
+//        }
+//        else
+//        {
+//            l2->val = c;
+//            count = 0;
+//        }
+//        prev = l2;
+//        l2 = l2->next;
+//        l1 = l1->next;
+//    }
+//    if (l2 == NULL && l1 != NULL)
+//    {
+//        prev->next = l1;
+//        while (l1 && count == 1)
+//        {
+//            int a = l1->val + count;
+//            if (a >= 10)
+//            {
+//                l1->val = a - 10;
+//                count = 1;
+//            }
+//            else
+//            {
+//                l1->val = a;
+//                count = 0;
+//            }
+//            prev = l1;
+//            l1 = l1->next;
+//        }
+//    }
+//    else if (l1 == NULL && l2 != NULL && count == 1)
+//    {
+//        while (l2 && count == 1)
+//        {
+//            int a = l2->val + count;
+//            if (a >= 10)
+//            {
+//                l2->val = a - 10;
+//                count = 1;
+//            }
+//            else
+//            {
+//                l2->val = a;
+//                count = 0;
+//            }
+//            prev = l2;
+//            l2 = l2->next;
+//        }
+//    }
+//    if (!l2 && !l1 && count == 1)
+//    {
+//        struct ListNode* node = (struct ListNode*)malloc(sizeof(struct ListNode));
+//        node->val = 1;
+//        prev->next = node;
+//        node->next = NULL;
+//    }
+//    return t;
+//}
 
-struct ListNode* addTwoNumbers(struct ListNode* l1, struct ListNode* l2) {
-    int count = 0;
-    struct ListNode* t = (struct ListNode*)malloc(sizeof(struct ListNode)), * prev;
-    t = l2;
-    while (l1 && l2)
+struct TreeNode
+{
+    int val;
+    struct TreeNode* left;
+    struct TreeNode* right;
+};
+
+int** levelOrder(struct TreeNode* root, int* returnSize, int** returnColumnSizes) {
+    *returnSize = 0;//returnSize表示的是返回数组的行
+    if (!root)
+        return NULL;
+    int** rslt = (int**)malloc(sizeof(int*) * 2000);//这是要返回的数组，一共有两千个结点。
+    *returnColumnSizes = (int*)malloc(sizeof(int) * 2000);//那么columnsize当然就是列了。
+    int front = 0, rear = 0, prev;//三个数分别代表队前，队尾，二叉树的每层。
+    int i = 0;//相当于returnSize
+    int j = 0;//每一行的[i][j];
+    struct TreeNode* qnueu[2001];//队列
+    struct TreeNode* pNode;
+    qnueu[rear++] = root;
+    while (front < rear)//队列不为空，继续循环
     {
-        int a = l1->val;
-        int b = l2->val;
-        int c = a + b + count;
-        if (c >= 10)
+        prev = rear;//此时prev表示当前层数的最后一个数。
+        rslt[i] = (int*)malloc(sizeof(int) * (prev - front));//为每一行的rslt开辟空间，空间大小就是当前层数的数 - 上一层的数
+        (*returnColumnSizes)[i] = (prev - front);//同时，要求返回的数组也要赋值相同大小的空间。一个*表示一级解引用，一个表示行，两个表示列。
+        while (front < prev)
         {
-            l2->val = c - 10;
-            count = 1;
+            pNode = qnueu[front++];
+            rslt[i][j++] = pNode->val;
+            if (pNode->left)
+                qnueu[rear++] = pNode->left;
+            if (pNode->right)
+                qnueu[rear++] = pNode->right;
         }
-        else
-        {
-            l2->val = c;
-            count = 0;
-        }
-        prev = l2;
-        l2 = l2->next;
-        l1 = l1->next;
+        i++;
+        (*returnSize)++;
+        j = 0;
     }
-    if (l2 == NULL && l1 != NULL)
-    {
-        prev->next = l1;
-        while (l1 && count == 1)
-        {
-            int a = l1->val + count;
-            if (a >= 10)
-            {
-                l1->val = a - 10;
-                count = 1;
-            }
-            else
-            {
-                l1->val = a;
-                count = 0;
-            }
-            prev = l1;
-            l1 = l1->next;
-        }
-    }
-    else if (l1 == NULL && l2 != NULL && count == 1)
-    {
-        while (l2 && count == 1)
-        {
-            int a = l2->val + count;
-            if (a >= 10)
-            {
-                l2->val = a - 10;
-                count = 1;
-            }
-            else
-            {
-                l2->val = a;
-                count = 0;
-            }
-            prev = l2;
-            l2 = l2->next;
-        }
-    }
-    if (!l2 && !l1 && count == 1)
-    {
-        struct ListNode* node = (struct ListNode*)malloc(sizeof(struct ListNode));
-        node->val = 1;
-        prev->next = node;
-        node->next = NULL;
-    }
-    return t;
+    return rslt;
+}
+
+int main()
+{
+    struct TreeNode* root;
+    int* s = NULL;
+    int** v = NULL;
+    levelOrder(root,s,v);
 }
