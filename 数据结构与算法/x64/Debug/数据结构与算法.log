@@ -1,2 +1,6 @@
 ﻿  数据结构算法.c
-C:\C语言\source\repos\20220306\数据结构与算法\数据结构算法.c(335): error C4700: 使用了未初始化的局部变量“root”
+C:\C语言\source\repos\20220306\数据结构与算法\数据结构算法.c(592,21): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+C:\C语言\source\repos\20220306\数据结构与算法\数据结构算法.c(595,21): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+C:\C语言\source\repos\20220306\数据结构与算法\数据结构算法.c(627,20): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+C:\C语言\source\repos\20220306\数据结构与算法\数据结构算法.c(656,29): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+  数据结构与算法.vcxproj -> C:\C语言\source\repos\20220306\数据结构与算法\x64\Debug\数据结构与算法.exe

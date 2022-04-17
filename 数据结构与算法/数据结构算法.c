@@ -474,51 +474,236 @@
 //    }
 //    return t;
 //}
+//
+//struct TreeNode
+//{
+//    int val;
+//    struct TreeNode* left;
+//    struct TreeNode* right;
+//};
+//
+//int** levelOrder(struct TreeNode* root, int* returnSize, int** returnColumnSizes) {
+//    *returnSize = 0;//returnSize表示的是返回数组的行
+//    if (!root)
+//        return NULL;
+//    int** rslt = (int**)malloc(sizeof(int*) * 2000);//这是要返回的数组，一共有两千个结点。
+//    *returnColumnSizes = (int*)malloc(sizeof(int) * 2000);//那么columnsize当然就是列了。
+//    int front = 0, rear = 0, prev;//三个数分别代表队前，队尾，二叉树的每层。
+//    int i = 0;//相当于returnSize
+//    int j = 0;//每一行的[i][j];
+//    struct TreeNode* qnueu[2001];//队列
+//    struct TreeNode* pNode;
+//    qnueu[rear++] = root;
+//    while (front < rear)//队列不为空，继续循环
+//    {
+//        prev = rear;//此时prev表示当前层数的最后一个数。
+//        rslt[i] = (int*)malloc(sizeof(int) * (prev - front));//为每一行的rslt开辟空间，空间大小就是当前层数的数 - 上一层的数
+//        (*returnColumnSizes)[i] = (prev - front);//同时，要求返回的数组也要赋值相同大小的空间。一个*表示一级解引用，一个表示行，两个表示列。
+//        while (front < prev)
+//        {
+//            pNode = qnueu[front++];
+//            rslt[i][j++] = pNode->val;
+//            if (pNode->left)
+//                qnueu[rear++] = pNode->left;
+//            if (pNode->right)
+//                qnueu[rear++] = pNode->right;
+//        }
+//        i++;
+//        (*returnSize)++;
+//        j = 0;
+//    }
+//    return rslt;
+//}
+//
+//int main()
+//{
+//    struct TreeNode* root;
+//    int* s = NULL;
+//    int** v = NULL;
+//    levelOrder(root,s,v);
+//}
+//
+//struct TreeNode* pNode;
+//*returnSize = 0;
+//if (!root)
+//return NULL;
+//struct TreeNode* ans[2020];
+//int** rslt = (int**)malloc(sizeof(int*) * 2000);
+//*returnColumnSizes = (int*)malloc(sizeof(int) * 2000);
+//int i = 0;
+//int j = 0;
+//int front = 0;
+//int rear = 0;
+//int prev;
+//int f = 0;
+//int leve = 0;
+//int leves[2000] = { 0 };
+//ans[rear++] = root;
+//int arr[2020] = { 0 };
+//while (front < rear)
+//{
+//    prev = rear;
+//    leves[leve++] = prev - front;
+//    while (front < prev)
+//    {
+//        pNode = ans[front++];
+//        arr[f++] = pNode->val;
+//        if (pNode->left)
+//            ans[rear++] = pNode->left;
+//        if (pNode->right)
+//            ans[rear++] = pNode->right;
+//    }
+//    arr[f++] = 1024;
+//}
+//int num = 0;
+//f--;
+//while (f >= 0)
+//{
+//    leve--;
+//    rslt[i] = (int*)malloc(sizeof(int) * leves[leve]);
+//    (*returnColumnSizes)[i] = leves[leve];
+//    num = f - leves[leve];
+//    f = num;
+//    while (arr[num] != 1024)
+//    {
+//        rslt[i][j++] = arr[num++];
+//    }
+//    j = 0;
+//    *returnSize += 1;
+//    f--;
+//    i++;
+//}
+//return rslt;
+#include <string.h>
+//
+//int main()
+//{
+//	char s[1000] = "\0";
+//	strstr();
+//	int a = 0 % 2;
+//	printf("%d", a);
+//	return 0;
+//}
 
-struct TreeNode
+#define MAx(a,b) (a > b ? a : b)
+
+int My_strstr(const char* s1, const char* s2)
 {
-    int val;
-    struct TreeNode* left;
-    struct TreeNode* right;
-};
-
-int** levelOrder(struct TreeNode* root, int* returnSize, int** returnColumnSizes) {
-    *returnSize = 0;//returnSize表示的是返回数组的行
-    if (!root)
-        return NULL;
-    int** rslt = (int**)malloc(sizeof(int*) * 2000);//这是要返回的数组，一共有两千个结点。
-    *returnColumnSizes = (int*)malloc(sizeof(int) * 2000);//那么columnsize当然就是列了。
-    int front = 0, rear = 0, prev;//三个数分别代表队前，队尾，二叉树的每层。
-    int i = 0;//相当于returnSize
-    int j = 0;//每一行的[i][j];
-    struct TreeNode* qnueu[2001];//队列
-    struct TreeNode* pNode;
-    qnueu[rear++] = root;
-    while (front < rear)//队列不为空，继续循环
+    int sz1 = strlen(s1);
+    int i = 0;
+    int k = 0;
+    int sz2 = strlen(s2);
+    int count = 0;
+    for (i = 0; i < sz1; i++)
     {
-        prev = rear;//此时prev表示当前层数的最后一个数。
-        rslt[i] = (int*)malloc(sizeof(int) * (prev - front));//为每一行的rslt开辟空间，空间大小就是当前层数的数 - 上一层的数
-        (*returnColumnSizes)[i] = (prev - front);//同时，要求返回的数组也要赋值相同大小的空间。一个*表示一级解引用，一个表示行，两个表示列。
-        while (front < prev)
+        if (s2[count] == s1[i])
+            count++;
+        else
         {
-            pNode = qnueu[front++];
-            rslt[i][j++] = pNode->val;
-            if (pNode->left)
-                qnueu[rear++] = pNode->left;
-            if (pNode->right)
-                qnueu[rear++] = pNode->right;
+            i -= count;
+            count = 0;
         }
-        i++;
-        (*returnSize)++;
-        j = 0;
+        if (count == sz2 && (s1[i + 1] == ' ' || s1[i + 1] == '\0') && s1[i - count] == ' ')
+        {
+            return (i + 1);
+        }
     }
-    return rslt;
+    return -1050;
+}
+//
+//int My_strlen(char** banned,int j)
+//{
+//    int count = 0;
+//    while(banned[j][count] != '\0')
+//        count++;
+//    return count;
+//}
+
+char* mostCommonWord(char* paragraph, char** banned, int bannedSize) {
+
+    int i = 0;
+    int max = 0;
+    char* Max = (char*)malloc(sizeof(char) * 1001);
+    int sz = strlen(paragraph);
+    char s[1000] = "\0";
+    for (i = 0; i < sz; i++)
+    {
+        if (paragraph[i] >= 'A' && paragraph[i] <= 'Z')
+            paragraph[i] += ('a' - 'A');
+        else if (paragraph[i] >= 'a' && paragraph[i] <= 'z')
+            continue;
+        else
+            paragraph[i] = ' ';
+    }
+    int ret = 0;
+    int count = 0;
+    i = 0;
+    while (i < sz)
+    {
+        ret = 0;
+        count = 1;
+        while (paragraph[i] == ' ' && i < sz)
+            i++;
+        while (paragraph[i] != ' ' && i < sz)
+        {
+            s[ret++] = paragraph[i++];
+        }
+        int j = 0;
+        s[ret] = '\0';
+        int FLAG = 0;
+        for (j = 0; j < bannedSize; j++)
+        {
+            int szz = strlen(banned[j]);
+            int a = 0;
+            if (szz == ret)
+            {
+                for (a = 0; a < ret; a++)
+                {
+                    if (banned[j][a] != s[a])
+                        break;
+                }
+                if (a == ret)
+                {
+                    FLAG = 1;
+                    break;
+                }
+            }
+            else
+                continue;
+        }
+        if (FLAG == 1)
+            continue;
+        else
+        {
+            int p = 0;
+            while (p > -1 &&  (p + i) < sz)
+            {
+
+                int a = My_strstr(paragraph + p + i, s);
+                p += a;
+                if (a != -1)
+                    count++;
+            }
+        }
+        if (count > max)
+        {
+            max = count;           
+            for (j = 0; j < ret; j++)
+            {
+                Max[j] = s[j];
+            }
+            Max[j] = '\0';
+        }
+    }
+    return Max;
 }
 
 int main()
 {
-    struct TreeNode* root;
-    int* s = NULL;
-    int** v = NULL;
-    levelOrder(root,s,v);
+    char para[] = "a";
+	char* banned[3] = {"hit","far","the"};
+	char* p = NULL;
+    p = mostCommonWord(para,banned, 3);
+    printf("%s", p);
+	return 0;
 }
