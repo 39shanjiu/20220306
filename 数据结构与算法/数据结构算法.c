@@ -583,127 +583,218 @@
 //	int a = 0 % 2;
 //	printf("%d", a);
 //	return 0;
-//}
-
-#define MAx(a,b) (a > b ? a : b)
-
-int My_strstr(const char* s1, const char* s2)
-{
-    int sz1 = strlen(s1);
-    int i = 0;
-    int k = 0;
-    int sz2 = strlen(s2);
-    int count = 0;
-    for (i = 0; i < sz1; i++)
-    {
-        if (s2[count] == s1[i])
-            count++;
-        else
-        {
-            i -= count;
-            count = 0;
-        }
-        if (count == sz2 && (s1[i + 1] == ' ' || s1[i + 1] == '\0') && s1[i - count] == ' ')
-        {
-            return (i + 1);
-        }
-    }
-    return -1050;
-}
+////}
 //
-//int My_strlen(char** banned,int j)
+//#define MAx(a,b) (a > b ? a : b)
+//
+//int My_strstr(const char* s1, const char* s2)
 //{
+//    int sz1 = strlen(s1);
+//    int i = 0;
+//    int k = 0;
+//    int sz2 = strlen(s2);
 //    int count = 0;
-//    while(banned[j][count] != '\0')
-//        count++;
-//    return count;
+//    for (i = 0; i < sz1; i++)
+//    {
+//        if (s2[count] == s1[i])
+//            count++;
+//        else
+//        {
+//            i -= count;
+//            count = 0;
+//        }
+//        if (count == sz2 && (s1[i + 1] == ' ' || s1[i + 1] == '\0') && s1[i - count] == ' ')
+//        {
+//            return (i + 1);
+//        }
+//    }
+//    return -1050;
+//}
+////
+////int My_strlen(char** banned,int j)
+////{
+////    int count = 0;
+////    while(banned[j][count] != '\0')
+////        count++;
+////    return count;
+////}
+//
+//char* mostCommonWord(char* paragraph, char** banned, int bannedSize) {
+//
+//    int i = 0;
+//    int max = 0;
+//    char* Max = (char*)malloc(sizeof(char) * 1001);
+//    int sz = strlen(paragraph);
+//    char s[1000] = "\0";
+//    for (i = 0; i < sz; i++)
+//    {
+//        if (paragraph[i] >= 'A' && paragraph[i] <= 'Z')
+//            paragraph[i] += ('a' - 'A');
+//        else if (paragraph[i] >= 'a' && paragraph[i] <= 'z')
+//            continue;
+//        else
+//            paragraph[i] = ' ';
+//    }
+//    int ret = 0;
+//    int count = 0;
+//    i = 0;
+//    while (i < sz)
+//    {
+//        ret = 0;
+//        count = 1;
+//        while (paragraph[i] == ' ' && i < sz)
+//            i++;
+//        while (paragraph[i] != ' ' && i < sz)
+//        {
+//            s[ret++] = paragraph[i++];
+//        }
+//        int j = 0;
+//        s[ret] = '\0';
+//        int FLAG = 0;
+//        for (j = 0; j < bannedSize; j++)
+//        {
+//            int szz = strlen(banned[j]);
+//            int a = 0;
+//            if (szz == ret)
+//            {
+//                for (a = 0; a < ret; a++)
+//                {
+//                    if (banned[j][a] != s[a])
+//                        break;
+//                }
+//                if (a == ret)
+//                {
+//                    FLAG = 1;
+//                    break;
+//                }
+//            }
+//            else
+//                continue;
+//        }
+//        if (FLAG == 1)
+//            continue;
+//        else
+//        {
+//            int p = 0;
+//            while (p > -1 &&  (p + i) < sz)
+//            {
+//
+//                int a = My_strstr(paragraph + p + i, s);
+//                p += a;
+//                if (a != -1)
+//                    count++;
+//            }
+//        }
+//        if (count > max)
+//        {
+//            max = count;           
+//            for (j = 0; j < ret; j++)
+//            {
+//                Max[j] = s[j];
+//            }
+//            Max[j] = '\0';
+//        }
+//    }
+//    return Max;
+//}
+//
+//int main()
+//{
+//    char para[] = "a";
+//	char* banned[3] = {"hit","far","the"};
+//	char* p = NULL;
+//    p = mostCommonWord(para,banned, 3);
+//    printf("%s", p);
+//	return 0;
 //}
 
-char* mostCommonWord(char* paragraph, char** banned, int bannedSize) {
+//
+//int main()
+//{
+//	int a = 5e4;
+//	int b;
+//	scanf_s("%d%d", &a, &b);
+//	printf("%d %d", a,b);
+//	return 0;
+//}44
+//
+//
+//void serch_DFS(char** grid, int gridSize, int gridColSize, int i, int j)
+//{
+//    grid[i][j] = '0';
+//    if (i + 1 < gridSize && grid[i + 1][j] == '1')
+//        serch_DFS(grid, gridSize, gridColSize, i + 1, j);
+//    if (j - 1 > 0 && grid[i][j - 1] == '1')
+//        serch_DFS(grid, gridSize, gridColSize, i, j - 1);
+//    if (j + 1 < gridColSize && grid[i][j + 1] == '1')
+//        serch_DFS(grid, gridSize, gridColSize, i, j + 1);
+//    if (i - 1 > 0 && grid[i - 1][j] == '1')
+//        serch_DFS(grid, gridSize, gridColSize, i - 1, j);
+//    return;
+//}
+//int numIslands(char** grid, int gridSize, int* gridColSize) {
+//    int i = 0;
+//    int count = 0;
+//    int j = 0;
+//    for (i = 0; i < 3; i++)
+//    {
+//        for (j = 0; j < 3; j++)
+//        {
+//            if (grid[i][j] == '1')
+//            {
+//                serch_DFS(grid,3, 3, i, j);
+//                count++;
+//            }
+//        }
+//    }
+//    return count;
+//
+//}
+//
+//int main()
+//{
+//    char grid[3][3] = { "111","010","111" };
+//    int max = numIslands(grid, 3, grid[0]);
+//    printf("%d", max);
+//	return 0;
+//}
 
-    int i = 0;
-    int max = 0;
-    char* Max = (char*)malloc(sizeof(char) * 1001);
-    int sz = strlen(paragraph);
-    char s[1000] = "\0";
-    for (i = 0; i < sz; i++)
-    {
-        if (paragraph[i] >= 'A' && paragraph[i] <= 'Z')
-            paragraph[i] += ('a' - 'A');
-        else if (paragraph[i] >= 'a' && paragraph[i] <= 'z')
-            continue;
-        else
-            paragraph[i] = ' ';
-    }
-    int ret = 0;
-    int count = 0;
-    i = 0;
-    while (i < sz)
-    {
-        ret = 0;
-        count = 1;
-        while (paragraph[i] == ' ' && i < sz)
-            i++;
-        while (paragraph[i] != ' ' && i < sz)
-        {
-            s[ret++] = paragraph[i++];
-        }
-        int j = 0;
-        s[ret] = '\0';
-        int FLAG = 0;
-        for (j = 0; j < bannedSize; j++)
-        {
-            int szz = strlen(banned[j]);
-            int a = 0;
-            if (szz == ret)
-            {
-                for (a = 0; a < ret; a++)
-                {
-                    if (banned[j][a] != s[a])
-                        break;
-                }
-                if (a == ret)
-                {
-                    FLAG = 1;
-                    break;
-                }
-            }
-            else
-                continue;
-        }
-        if (FLAG == 1)
-            continue;
-        else
-        {
-            int p = 0;
-            while (p > -1 &&  (p + i) < sz)
-            {
+int** ans;//返回的二维数组
+int stk[15];//我知道了，这是模拟实现一个类似队列的玩意。
+//又有点像栈，由于这里调用栈频繁，且内有循环，我是解释不清楚了，慢慢意会吧。
+int stkSize;//达到的第几个结点
 
-                int a = My_strstr(paragraph + p + i, s);
-                p += a;
-                if (a != -1)
-                    count++;
-            }
-        }
-        if (count > max)
-        {
-            max = count;           
-            for (j = 0; j < ret; j++)
-            {
-                Max[j] = s[j];
-            }
-            Max[j] = '\0';
-        }
+void dfs(int x, int n, int** graph, int* graphColSize, int* returnSize, int** returnColumnSizes) {
+    if (x == n) //如果到达目的地
+    {
+        //ans是二维数组，此时需要一维数组来确定具体答案。
+        int* tmp = malloc(sizeof(int) * stkSize);//创建一个数组
+        memcpy(tmp, stk, sizeof(int) * stkSize);//直接将stk当前的数值付给tmp，这里stk不方便开辟堆区空间，所以交给tmp。
+        ans[*returnSize] = tmp;//这里数组直接赋值，第一次见。
+        (*returnColumnSizes)[(*returnSize)++] = stkSize;//返回的要求数量记得给好。
+        return;
     }
-    return Max;
+    for (int i = 0; i < graphColSize[x]; i++) 
+    {
+        int y = graph[x][i];//当前结点的数值。
+        stk[stkSize++] = y;//给现在的队列添加成员。
+        dfs(y, n, graph, graphColSize, returnSize, returnColumnSizes);//开始下一轮的搜索。
+        stkSize--;
+    }
 }
 
+int** allPathsSourceTarget(int** graph, int graphSize, int* graphColSize, int* returnSize, int** returnColumnSizes) {
+    stkSize = 0;//开头为0，因为第一个结点不可能返回自身。
+    stk[stkSize++] = 0;
+    ans = malloc(sizeof(int*) * 16384);
+    *returnSize = 0;
+    *returnColumnSizes = malloc(sizeof(int) * 16384);
+    dfs(0, graphSize - 1, graph, graphColSize, returnSize, returnColumnSizes);
+    //从0 到 n - 1.
+    return ans;
+}
 int main()
 {
-    char para[] = "a";
-	char* banned[3] = {"hit","far","the"};
-	char* p = NULL;
-    p = mostCommonWord(para,banned, 3);
-    printf("%s", p);
+
 	return 0;
 }

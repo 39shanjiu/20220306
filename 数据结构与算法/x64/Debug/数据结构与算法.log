@@ -1,6 +1,5 @@
 ﻿  数据结构算法.c
-C:\C语言\source\repos\20220306\数据结构与算法\数据结构算法.c(592,21): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-C:\C语言\source\repos\20220306\数据结构与算法\数据结构算法.c(595,21): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-C:\C语言\source\repos\20220306\数据结构与算法\数据结构算法.c(627,20): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
-C:\C语言\source\repos\20220306\数据结构与算法\数据结构算法.c(656,29): warning C4267: “初始化”: 从“size_t”转换到“int”，可能丢失数据
+C:\C语言\source\repos\20220306\数据结构与算法\数据结构算法.c(757,30): warning C4047: “函数”:“char **”与“char [3][3]”的间接级别不同
+C:\C语言\source\repos\20220306\数据结构与算法\数据结构算法.c(757,26): warning C4024: “numIslands”: 形参和实参 1 的类型不同
+C:\C语言\source\repos\20220306\数据结构与算法\数据结构算法.c(757,42): warning C4133: “函数”: 从“char [3]”到“int *”的类型不兼容
   数据结构与算法.vcxproj -> C:\C语言\source\repos\20220306\数据结构与算法\x64\Debug\数据结构与算法.exe
