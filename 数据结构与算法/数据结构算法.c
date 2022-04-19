@@ -758,43 +758,103 @@
 //    printf("%d", max);
 //	return 0;
 //}
+//
+//int** ans;//返回的二维数组
+//int stk[15];//我知道了，这是模拟实现一个类似队列的玩意。
+////又有点像栈，由于这里调用栈频繁，且内有循环，我是解释不清楚了，慢慢意会吧。
+//int stkSize;//达到的第几个结点
+//
+//void dfs(int x, int n, int** graph, int* graphColSize, int* returnSize, int** returnColumnSizes) {
+//    if (x == n) //如果到达目的地
+//    {
+//        //ans是二维数组，此时需要一维数组来确定具体答案。
+//        int* tmp = malloc(sizeof(int) * stkSize);//创建一个数组
+//        memcpy(tmp, stk, sizeof(int) * stkSize);//直接将stk当前的数值付给tmp，这里stk不方便开辟堆区空间，所以交给tmp。
+//        ans[*returnSize] = tmp;//这里数组直接赋值，第一次见。
+//        (*returnColumnSizes)[(*returnSize)++] = stkSize;//返回的要求数量记得给好。
+//        return;
+//    }
+//    for (int i = 0; i < graphColSize[x]; i++) 
+//    {
+//        int y = graph[x][i];//当前结点的数值。
+//        stk[stkSize++] = y;//给现在的队列添加成员。
+//        dfs(y, n, graph, graphColSize, returnSize, returnColumnSizes);//开始下一轮的搜索。
+//        stkSize--;
+//    }
+//}voi
+//
+//int** allPathsSourceTarget(int** graph, int graphSize, int* graphColSize, int* returnSize, int** returnColumnSizes) {
+//    stkSize = 0;//开头为0，因为第一个结点不可能返回自身。
+//    stk[stkSize++] = 0;
+//    ans = malloc(sizeof(int*) * 16384);
+//    *returnSize = 0;
+//    *returnColumnSizes = malloc(sizeof(int) * 16384);
+//    dfs(0, graphSize - 1, graph, graphColSize, returnSize, returnColumnSizes);
+//    //从0 到 n - 1.
+//    return ans;
+//}
+//int main()
+//{
+//
+//	return 0;
+//}
 
-int** ans;//返回的二维数组
-int stk[15];//我知道了，这是模拟实现一个类似队列的玩意。
-//又有点像栈，由于这里调用栈频繁，且内有循环，我是解释不清楚了，慢慢意会吧。
-int stkSize;//达到的第几个结点
+//
+//void judy(int * a)
+//{	
+//	*a = 2;
+//}
+//
+//int main()
+//{
+//	int b = 0;
+//	int* a = b;
+//	judy(a);
+//	if (a != NULL)
+//	{
+//		printf("%d ", (*a));
+//	}
+//	return 0;
+//}
 
-void dfs(int x, int n, int** graph, int* graphColSize, int* returnSize, int** returnColumnSizes) {
-    if (x == n) //如果到达目的地
-    {
-        //ans是二维数组，此时需要一维数组来确定具体答案。
-        int* tmp = malloc(sizeof(int) * stkSize);//创建一个数组
-        memcpy(tmp, stk, sizeof(int) * stkSize);//直接将stk当前的数值付给tmp，这里stk不方便开辟堆区空间，所以交给tmp。
-        ans[*returnSize] = tmp;//这里数组直接赋值，第一次见。
-        (*returnColumnSizes)[(*returnSize)++] = stkSize;//返回的要求数量记得给好。
-        return;
-    }
-    for (int i = 0; i < graphColSize[x]; i++) 
-    {
-        int y = graph[x][i];//当前结点的数值。
-        stk[stkSize++] = y;//给现在的队列添加成员。
-        dfs(y, n, graph, graphColSize, returnSize, returnColumnSizes);//开始下一轮的搜索。
-        stkSize--;
-    }
-}
-
-int** allPathsSourceTarget(int** graph, int graphSize, int* graphColSize, int* returnSize, int** returnColumnSizes) {
-    stkSize = 0;//开头为0，因为第一个结点不可能返回自身。
-    stk[stkSize++] = 0;
-    ans = malloc(sizeof(int*) * 16384);
-    *returnSize = 0;
-    *returnColumnSizes = malloc(sizeof(int) * 16384);
-    dfs(0, graphSize - 1, graph, graphColSize, returnSize, returnColumnSizes);
-    //从0 到 n - 1.
-    return ans;
-}
-int main()
+int comp(const void* e1, const void* e2)
 {
+    return (*(int*)e1 - *(int*)e2);
+}
 
-	return 0;
+int minimumRounds(int* tasks, int tasksSize) {
+    int i = 0;
+    int count = 0;
+    qsort(tasks, tasksSize, sizeof(int), comp);
+    int num = tasks[0];
+    int sum = 1;
+    int flag = 1;
+    for (i = 1; i < tasksSize; i++)
+    {
+        if (tasks[i] == num)
+        {
+            sum++;
+            if (sum == 3)
+            {
+                sum = 0;
+                count++;
+            }
+            flag++;
+        }
+        else
+        {
+            if (flag == 1)
+                return -1;
+            num = tasks[i];
+            if (sum == 1 || sum == 2)
+                count++;
+            sum = 1;
+            flag = 1;
+        }
+    }
+    if (sum == 1 || sum == 2)
+        count++;
+    if (flag == 1)
+        return -1;
+    return count;
 }
